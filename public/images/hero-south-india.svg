@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">A white tourist vehicle on a South Indian hill route</title>
+  <desc id="desc">Original illustration of a white vehicle travelling through green hills beneath a warm sky.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dce9ec"/>
+      <stop offset="1" stop-color="#f6eee0"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#536e69"/>
+      <stop offset="1" stop-color="#263f43"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#697479"/>
+      <stop offset="1" stop-color="#303d46"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-50%" width="160%" height="200%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h960v720H0z"/>
+  <circle cx="736" cy="178" r="72" fill="#f0c66a" opacity=".72"/>
+  <path fill="#bacdcc" d="M0 345 173 189l157 151 152-190 220 206 112-130 146 118v225H0z"/>
+  <path fill="#a1b8b3" d="m0 397 204-172 171 174 154-128 182 151 143-147 106 99v232H0z"/>
+  <path fill="url(#hill)" d="M0 409c128-73 210-66 302-8 107-117 195-112 290-21 90-89 226-79 368 8v332H0z"/>
+  <path fill="#354f4c" d="M0 483c113-65 211-76 311-12 100-54 211-44 302 19 117-72 239-69 347 1v241H0z"/>
+  <path fill="#789078" d="M0 521c117-53 177-37 273 6 113-61 188-34 269 18 110-54 214-44 323 18 38-17 68-25 95-26v183H0z"/>
+  <path fill="#c7ad77" d="M0 596c151-40 259-25 385 30 124-54 227-44 327 2 96-29 172-20 248 9v83H0z" opacity=".42"/>
+  <path fill="#58656c" d="M401 720c15-66 51-119 109-176 52-51 76-91 70-134-4-30-22-55-48-79l26-14c46 26 70 58 75 96 8 60-35 112-96 169-53 50-82 95-88 138z"/>
+  <path fill="url(#road)" d="M303 720c25-90 69-147 150-215 77-65 128-111 121-153-4-25-26-46-58-67l36-24c52 31 78 61 83 97 9 64-49 116-125 180-79 67-119 119-140 182z"/>
+  <path fill="none" stroke="#e5d9b6" stroke-dasharray="14 18" stroke-linecap="round" stroke-width="5" d="M404 700c28-73 72-120 135-175 58-50 102-87 97-121-2-14-11-25-28-38"/>
+  <g fill="#304b45">
+    <path d="m90 417 18-75 18 75z"/><path d="m84 440 24-92 24 92z"/><path d="M78 455h60v7H78z"/>
+    <path d="m826 399 17-69 17 69z"/><path d="m820 421 23-87 23 87z"/><path d="M814 435h58v7h-58z"/>
+    <path d="m183 476 13-52 13 52z"/><path d="m179 491 17-65 17 65z"/><path d="M173 502h46v6h-46z"/>
+  </g>
+  <ellipse cx="586" cy="585" rx="158" ry="25" fill="#13232b" opacity=".3" filter="url(#shadow)"/>
+  <g transform="translate(438 434)">
+    <path fill="#152b35" d="M30 83h302c19 0 34 14 34 32v47H15v-48c0-17 6-31 15-31z"/>
+    <path fill="#f8faf9" d="M43 27c9-16 23-24 45-24h129c19 0 32 6 44 20l41 50H28z"/>
+    <path fill="#dfe7e8" d="M92 14h66v51H57l24-39c3-7 6-10 11-12z"/>
+    <path fill="#243b46" d="M170 14h47c13 0 21 4 29 13l30 38H170z"/>
+    <path fill="#fff" d="M34 72h288c20 0 36 15 40 35l4 21H19V94c0-12 5-22 15-22z"/>
+    <path fill="#dfe6e7" d="M19 116h347v31H19z"/>
+    <path fill="#c4a24c" d="M20 143h346v8H20z"/>
+    <path fill="#12232c" d="M22 150h344v20H22z"/>
+    <path fill="#fff" d="M154 84h94v6h-94z"/>
+    <path fill="#e9b83f" d="M279 91h27v21h-27z"/>
+    <path fill="#ffe39d" d="M25 96h19v17H25z"/>
+    <path fill="#142630" d="M77 158h53v10H77zM270 158h53v10h-53z"/>
+    <circle cx="92" cy="165" r="29" fill="#172733"/>
+    <circle cx="92" cy="165" r="14" fill="#d6dcdd"/>
+    <circle cx="92" cy="165" r="6" fill="#73838a"/>
+    <circle cx="294" cy="165" r="29" fill="#172733"/>
+    <circle cx="294" cy="165" r="14" fill="#d6dcdd"/>
+    <circle cx="294" cy="165" r="6" fill="#73838a"/>
+    <path fill="#d4aa38" d="M132 4h115v5H132z"/>
+    <path fill="#d4aa38" d="M145 1v8h5V1zM232 1v8h5V1z"/>
+    <path fill="#b5c6c8" d="M256 77h14l16 17h-30z"/>
+  </g>
+  <g fill="#dce7d4" opacity=".8">
+    <circle cx="96" cy="584" r="4"/><circle cx="134" cy="549" r="3"/>
+    <circle cx="863" cy="552" r="4"/><circle cx="806" cy="586" r="3"/>
+    <circle cx="752" cy="493" r="3"/><circle cx="217" cy="555" r="3"/>
+  </g>
+</svg>

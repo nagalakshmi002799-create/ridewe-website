@@ -8,7 +8,7 @@ website based in Madurai, Tamil Nadu, India.
 ## Stack
 
 - React
-- TypeScript
+- JavaScript and JSX
 - Vite
 - Tailwind CSS
 - shadcn/ui
@@ -18,7 +18,8 @@ website based in Madurai, Tamil Nadu, India.
 
 ## Engineering principles
 
-- Use TypeScript strictly.
+- Use modern JavaScript and JSX; do not add TypeScript, Flow, or another type system.
+- Use Zod schemas for runtime validation where appropriate.
 - Prefer reusable components.
 - Keep business data separate from presentation.
 - Keep services separate from UI.
@@ -42,7 +43,7 @@ Pages belong in src/pages.
 
 External/business integrations belong in src/services.
 
-Shared types belong in src/types.
+Runtime validation schemas belong in src/lib/schemas.
 
 Utility functions belong in src/utils.
 
@@ -77,7 +78,7 @@ Business:
 RideWe Tours & Travels
 
 Tagline:
-Explore More. Travel Better.
+Ride Together for Better Experiences.
 
 Primary location:
 Madurai, Tamil Nadu, India
@@ -112,13 +113,12 @@ Future implementations may use Google Sheets or a REST API/database.
 
 Before considering a task complete:
 
-1. Run TypeScript checks.
-2. Run lint.
-3. Run build.
-4. Fix errors.
-5. Check responsive behavior.
-6. Check accessibility.
-7. Check broken links.
-8. Check that secrets are not exposed.
+1. Run lint.
+2. Run build.
+3. Fix errors.
+4. Check responsive behavior.
+5. Check accessibility.
+6. Check broken links.
+7. Check that secrets are not exposed.
 
 Do not make unrelated changes.
