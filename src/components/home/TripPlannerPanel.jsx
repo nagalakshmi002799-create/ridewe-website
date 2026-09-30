@@ -1,17 +1,19 @@
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { CalendarDays, CarFront, MapPin, Users } from "lucide-react";
 import { vehicles } from "../../data/vehicles.js";
 import { tripPlannerFormSchema } from "../../lib/schemas/trip-planner-form.js";
-import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
+import {
+  buildTripPlannerMessage,
+  buildTripPlannerWhatsAppUrl,
+} from "../../utils/trip-planner-whatsapp.js";
 import { Button } from "../ui/button.jsx";
 
 export function TripPlannerPanel() {
-  const [whatsAppMessage, setWhatsAppMessage] = useState("");
   const {
     formState: { errors },
     handleSubmit,
+    getValues,
     register,
   } = useForm({
     resolver: zodResolver(tripPlannerFormSchema),
@@ -24,22 +26,10 @@ export function TripPlannerPanel() {
     },
   });
 
-  function shareTripDetails({ destination, origin, travelDate, travellers, vehicle }) {
-    const details = [
-      "Hi RideWe, I would like to plan a trip.",
-      `From: ${origin}`,
-      `Destination: ${destination}`,
-      travelDate ? `Travel date: ${travelDate}` : null,
-      `Travellers: ${travellers}`,
-      vehicle ? `Vehicle preference: ${vehicle}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    setWhatsAppMessage(details);
-  }
-
-  function clearPreparedMessage() {
-    setWhatsAppMessage("");
+  function openWhatsAppAfterValidation() {
+    const message = buildTripPlannerMessage(getValues());
+    const whatsappUrl = buildTripPlannerWhatsAppUrl(message);
+    window.location.assign(whatsappUrl);
   }
 
   return (
@@ -65,7 +55,7 @@ export function TripPlannerPanel() {
       <form
         className="grid gap-3 sm:grid-cols-2"
         noValidate
-        onSubmit={handleSubmit(shareTripDetails)}
+        onSubmit={handleSubmit(openWhatsAppAfterValidation)}
       >
         <label className="grid gap-1.5 text-xs font-semibold text-slate-600">
           From
@@ -74,7 +64,7 @@ export function TripPlannerPanel() {
             aria-describedby={errors.origin ? "origin-error" : undefined}
             autoComplete="address-level2"
             className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-            {...register("origin", { onChange: clearPreparedMessage })}
+            {...register("origin")}
           />
           {errors.origin ? (
             <span className="text-xs font-medium text-red-700" id="origin-error" role="alert">
@@ -90,7 +80,7 @@ export function TripPlannerPanel() {
             autoComplete="off"
             className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition placeholder:font-normal placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/20"
             placeholder="Where would you like to go?"
-            {...register("destination", { onChange: clearPreparedMessage })}
+            {...register("destination")}
           />
           {errors.destination ? (
             <span className="text-xs font-medium text-red-700" id="destination-error" role="alert">
@@ -109,7 +99,7 @@ export function TripPlannerPanel() {
             <input
               className="min-h-11 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               type="date"
-              {...register("travelDate", { onChange: clearPreparedMessage })}
+              {...register("travelDate")}
             />
           </span>
         </label>
@@ -125,7 +115,7 @@ export function TripPlannerPanel() {
               aria-invalid={Boolean(errors.travellers)}
               aria-describedby={errors.travellers ? "travellers-error" : undefined}
               className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-              {...register("travellers", { onChange: clearPreparedMessage })}
+              {...register("travellers")}
             >
               <option value="">Select travellers</option>
               <option value="1">1 traveller</option>
@@ -151,7 +141,7 @@ export function TripPlannerPanel() {
             />
             <select
               className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-              {...register("vehicle", { onChange: clearPreparedMessage })}
+              {...register("vehicle")}
             >
               <option value="">Choose a vehicle (optional)</option>
               {vehicles.map((vehicle) => (
@@ -166,25 +156,10 @@ export function TripPlannerPanel() {
           <Button className="w-full" type="submit">
             Plan My Trip
           </Button>
-          {whatsAppMessage ? (
-            <p className="mt-2 text-center text-xs text-slate-600" role="status">
-              Your trip details are ready. Continue to WhatsApp to send them.
-            </p>
-          ) : (
-            <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
-              No booking is made here. Your details are shared with RideWe on WhatsApp.
-            </p>
-          )}
-          {whatsAppMessage ? (
-            <WhatsAppButton
-              className="mt-3 w-full"
-              message={whatsAppMessage}
-              size="sm"
-              variant="secondary"
-            >
-              Continue to WhatsApp
-            </WhatsAppButton>
-          ) : null}
+          <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
+            No booking is made here. WhatsApp opens with your message ready for
+            you to send.
+          </p>
         </div>
       </form>
     </div>
