@@ -39,7 +39,7 @@ export function BenefitsSection() {
                 className="rounded-2xl border border-slate-200 bg-surface p-5 sm:p-6"
                 key={benefit.title}
               >
-                <span className="grid size-10 place-items-center rounded-xl bg-brand text-accent">
+                <span className="grid size-10 place-items-center rounded-xl bg-brand-soft text-accent-dark">
                   <Icon aria-hidden="true" size={19} strokeWidth={1.8} />
                 </span>
                 <h3 className="mt-5 font-bold text-brand">{benefit.title}</h3>

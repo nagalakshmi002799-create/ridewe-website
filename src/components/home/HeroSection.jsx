@@ -4,9 +4,10 @@ import { Button } from "../ui/button.jsx";
 import { Container } from "../layout/Container.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
 import { scrollToSection } from "../../utils/scroll-to-section.js";
+import { JourneyRoute } from "./JourneyRoute.jsx";
 import { TripPlannerPanel } from "./TripPlannerPanel.jsx";
 
-const heroImage = `${import.meta.env.BASE_URL}images/hero-south-india.svg`;
+const heroLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-circle.png`;
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
@@ -19,7 +20,7 @@ export function HeroSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-36 -top-40 size-[30rem] rounded-full bg-amber-50"
+        className="pointer-events-none absolute -right-36 -top-40 size-[30rem] rounded-full bg-[#e9f8f2]"
       />
       <Container className="relative grid items-center gap-10 pb-14 pt-10 sm:pb-20 sm:pt-14 lg:min-h-[650px] lg:grid-cols-[0.94fr_1.06fr] lg:gap-8 lg:pb-20 lg:pt-16">
         <motion.div
@@ -29,7 +30,7 @@ export function HeroSection() {
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm">
-            <MapPin aria-hidden="true" className="text-amber-700" size={15} />
+            <MapPin aria-hidden="true" className="text-accent-dark" size={15} />
             Madurai, Tamil Nadu, India
           </div>
           <h1
@@ -41,7 +42,7 @@ export function HeroSection() {
               Better Experiences.
               <span
                 aria-hidden="true"
-                className="absolute -bottom-1 left-0 -z-10 h-2.5 w-full rounded-full bg-accent/55 sm:h-3"
+                className="absolute -bottom-1 left-0 -z-10 h-2.5 w-full rounded-full bg-gradient-to-r from-accent/45 to-[#35D45B]/50 sm:h-3"
               />
             </span>
           </h1>
@@ -76,29 +77,36 @@ export function HeroSection() {
         </motion.div>
 
         <div className="relative mx-auto w-full max-w-[650px] lg:ml-auto">
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-[#eaf0f1] shadow-[0_24px_70px_-35px_rgba(23,38,54,0.45)]">
-            <img
-              alt="Original illustration of a white tourist vehicle travelling through a South Indian hill landscape"
-              className="aspect-[1.2/1] w-full object-cover sm:aspect-[1.35/1]"
-              height="720"
-              src={heroImage}
-              width="960"
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-[#cfe8e3] bg-[#f5f8f7] p-5 shadow-[0_24px_70px_-40px_rgba(11,13,15,0.42)] sm:p-8">
+            <div
+              aria-hidden="true"
+              className="absolute -right-16 -top-20 size-64 rounded-full border border-accent/15"
             />
-            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl border border-white/70 bg-white/95 px-3.5 py-3 shadow-lg sm:bottom-6 sm:left-6">
-              <span className="grid size-9 place-items-center rounded-lg bg-amber-100 text-amber-800">
-                <MapPin aria-hidden="true" size={17} />
-              </span>
-              <span>
-                <span className="block text-xs font-semibold text-brand">
-                  Start your journey
-                </span>
-                <span className="mt-0.5 block text-[11px] text-slate-500">
-                  From Madurai
-                </span>
-              </span>
+            <div className="relative z-10 flex flex-col items-center">
+              <img
+                alt="RideWe Tours & Travels logo showing a car, road, mountains and sun"
+                className="w-[min(74%,320px)] object-contain"
+                height="320"
+                src={heroLogo}
+                width="320"
+              />
+              <div className="mt-4 w-full max-w-md rounded-2xl border border-slate-200 bg-white/95 px-4 pb-4 pt-2">
+                <p className="text-center text-[10px] font-bold uppercase tracking-[0.16em] text-accent-dark">
+                  A route to imagine
+                </p>
+                <JourneyRoute
+                  animated={false}
+                  className="mt-1"
+                  showLabels={false}
+                />
+                <div className="flex justify-between text-[11px] font-semibold text-slate-600">
+                  <span>Madurai</span>
+                  <span>South India</span>
+                </div>
+              </div>
             </div>
             <a
-              className="absolute right-4 top-4 grid size-10 place-items-center rounded-full border border-white/70 bg-white/90 text-brand shadow-sm transition-transform hover:translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:right-6 sm:top-6"
+              className="absolute right-4 top-4 z-20 grid size-10 place-items-center rounded-full border border-slate-200 bg-white text-brand shadow-sm transition-colors hover:border-accent/40 hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:right-6 sm:top-6"
               href="#route"
               onClick={(event) => scrollToSection(event, "route")}
               aria-label="Explore the sample route"

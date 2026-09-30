@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #172636;
-  --color-brand-dark: #0e1924;
-  --color-brand-soft: #edf1f4;
-  --color-accent: #eab83f;
-  --color-accent-dark: #d69c20;
-  --color-surface: #f6f7f8;
+  --color-brand: #0b0d0f;
+  --color-brand-dark: #151a1d;
+  --color-brand-soft: #e8f7f6;
+  --color-accent: #00a9b5;
+  --color-accent-dark: #007a83;
+  --color-surface: #f5f8f7;
   --font-sans: "Manrope", "Avenir Next", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   font-family: var(--font-sans);
-  color: #182635;
-  background: #f6f7f8;
+  color: #0b0d0f;
+  background: #f5f8f7;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,8 +48,8 @@ a {
 }
 
 ::selection {
-  color: #172636;
-  background: #f5d77e;
+  color: #0b0d0f;
+  background: #b8f1d0;
 }
 
 @media (prefers-reduced-motion: reduce) {

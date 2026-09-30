@@ -84,7 +84,7 @@ export function TariffPreview() {
             </div>
           ) : (
             <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-              <span className="grid size-11 place-items-center rounded-xl bg-amber-50 text-amber-800">
+              <span className="grid size-11 place-items-center rounded-xl bg-brand-soft text-accent-dark">
                 <BadgeIndianRupee aria-hidden="true" size={21} />
               </span>
               <h3 className="mt-5 text-lg font-bold text-brand">

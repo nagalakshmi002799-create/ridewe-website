@@ -6,6 +6,7 @@ import { PHONE_NUMBER, PHONE_TEL } from "../../utils/contact.js";
 import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { Button } from "../ui/button.jsx";
 import { Container } from "./Container.jsx";
+import { PhoneButton } from "./PhoneButton.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
 
 export function SiteHeader() {
@@ -32,24 +33,24 @@ export function SiteHeader() {
       <Container className="flex min-h-16 flex-wrap items-center justify-between gap-x-2 gap-y-3 py-3 lg:min-h-[76px] lg:flex-nowrap lg:gap-x-5">
         <Link
           aria-label="RideWe Tours & Travels home"
-          className="flex min-w-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           onClick={() => setMenuOpen(false)}
           to="/"
         >
-          <span
-            aria-hidden="true"
-            className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand text-accent"
-          >
-            <span className="text-lg font-black tracking-tighter">RW</span>
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate text-lg font-bold leading-tight tracking-tight text-brand sm:text-xl">
-              RideWe
-            </span>
-            <span className="block text-[11px] font-medium tracking-wide text-slate-500">
-              TOURS &amp; TRAVELS
-            </span>
-          </span>
+          <img
+            alt=""
+            className="hidden h-14 w-[172px] object-contain sm:block"
+            height="136"
+            src={`${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`}
+            width="384"
+          />
+          <img
+            alt=""
+            className="size-12 object-contain sm:hidden"
+            height="320"
+            src={`${import.meta.env.BASE_URL}brand/ridewe-logo-square.png`}
+            width="320"
+          />
         </Link>
 
         <nav
@@ -62,7 +63,7 @@ export function SiteHeader() {
         >
           {homepageNavigation.map((item) => (
             <a
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:py-2"
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-brand-soft hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:py-2"
               href={`#${item.id}`}
               key={item.id}
               onClick={(event) => navigateToSection(event, item.id)}
@@ -73,9 +74,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
+          <PhoneButton className="hidden sm:inline-flex" size="sm">
+            Call
+          </PhoneButton>
           <a
             aria-label={`Call RideWe at ${PHONE_NUMBER}`}
-            className="grid size-11 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-brand transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="grid size-10 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-brand transition-colors hover:border-accent/40 hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:hidden"
             href={PHONE_TEL}
           >
             <Phone aria-hidden="true" size={17} />
@@ -85,7 +89,7 @@ export function SiteHeader() {
             size="sm"
             variant="primary"
           >
-            <span className="hidden sm:inline">WhatsApp</span>
+            <span className="hidden sm:inline">WhatsApp Us</span>
             <span className="sm:hidden max-[380px]:hidden">Chat</span>
           </WhatsAppButton>
           <Button

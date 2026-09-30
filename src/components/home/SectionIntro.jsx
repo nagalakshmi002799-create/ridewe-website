@@ -15,7 +15,7 @@ export function SectionIntro({
       {eyebrow ? (
         <p
           className={`mb-3 text-xs font-bold uppercase tracking-[0.18em] ${
-            light ? "text-accent" : "text-amber-700"
+            light ? "text-accent" : "text-accent-dark"
           }`}
         >
           {eyebrow}

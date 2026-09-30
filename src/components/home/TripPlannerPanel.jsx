@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { CalendarDays, CarFront, MapPin, Users } from "lucide-react";
 import { vehicles } from "../../data/vehicles.js";
 import { tripPlannerFormSchema } from "../../lib/schemas/trip-planner-form.js";
+import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
 import { Button } from "../ui/button.jsx";
 
 export function TripPlannerPanel() {
@@ -43,7 +44,7 @@ export function TripPlannerPanel() {
 
   return (
     <div
-      className="relative z-10 mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_50px_-28px_rgba(23,38,54,0.4)] sm:mt-5 sm:p-5 lg:-ml-16 lg:mr-5"
+      className="relative z-10 mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_50px_-28px_rgba(11,13,15,0.3)] sm:mt-5 sm:p-5 lg:-ml-16 lg:mr-5"
       id="trip-planner"
     >
       <div className="mb-4 flex items-start justify-between gap-3">
@@ -55,7 +56,7 @@ export function TripPlannerPanel() {
         </div>
         <span
           aria-hidden="true"
-          className="grid size-9 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-800"
+          className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand-soft text-accent-dark"
         >
           <MapPin size={17} />
         </span>
@@ -72,7 +73,7 @@ export function TripPlannerPanel() {
             aria-invalid={Boolean(errors.origin)}
             aria-describedby={errors.origin ? "origin-error" : undefined}
             autoComplete="address-level2"
-            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15"
+            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
             {...register("origin", { onChange: clearPreparedMessage })}
           />
           {errors.origin ? (
@@ -87,7 +88,7 @@ export function TripPlannerPanel() {
             aria-invalid={Boolean(errors.destination)}
             aria-describedby={errors.destination ? "destination-error" : undefined}
             autoComplete="off"
-            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition placeholder:font-normal placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/15"
+            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition placeholder:font-normal placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/20"
             placeholder="Where would you like to go?"
             {...register("destination", { onChange: clearPreparedMessage })}
           />
@@ -106,7 +107,7 @@ export function TripPlannerPanel() {
               size={16}
             />
             <input
-              className="min-h-11 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15"
+              className="min-h-11 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               type="date"
               {...register("travelDate", { onChange: clearPreparedMessage })}
             />
@@ -123,7 +124,7 @@ export function TripPlannerPanel() {
             <select
               aria-invalid={Boolean(errors.travellers)}
               aria-describedby={errors.travellers ? "travellers-error" : undefined}
-              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15"
+              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               {...register("travellers", { onChange: clearPreparedMessage })}
             >
               <option value="">Select travellers</option>
@@ -149,7 +150,7 @@ export function TripPlannerPanel() {
               size={17}
             />
             <select
-              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15"
+              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               {...register("vehicle", { onChange: clearPreparedMessage })}
             >
               <option value="">Choose a vehicle (optional)</option>

@@ -8,7 +8,7 @@ export function TripPlanningCta() {
   return (
     <section
       aria-labelledby="planning-cta-title"
-      className="relative isolate overflow-hidden bg-brand py-14 sm:py-20"
+      className="relative isolate overflow-hidden bg-brand-dark py-14 sm:py-20"
       id="contact"
     >
       <div
@@ -52,7 +52,7 @@ export function TripPlanningCta() {
         <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
           <Button
             asChild
-            className="group bg-accent text-brand hover:bg-amber-300"
+            className="group bg-gradient-to-r from-accent to-[#35D45B] text-brand hover:brightness-95"
             onClick={(event) => scrollToSection(event, "trip-planner")}
             size="lg"
           >

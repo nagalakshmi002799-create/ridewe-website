@@ -20,7 +20,7 @@ function DestinationCard({ destination }) {
       ) : (
         <div
           aria-hidden="true"
-          className="grid aspect-[1.6/1] place-items-center bg-[#edf1f3] text-slate-400"
+          className="grid aspect-[1.6/1] place-items-center bg-[#f0f7f5] text-slate-400"
         >
           <Compass size={42} strokeWidth={1.2} />
         </div>
@@ -71,7 +71,7 @@ export function DestinationsSection() {
         ) : (
           <div className="flex flex-col gap-5 rounded-2xl border border-dashed border-slate-300 bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="flex items-start gap-4">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-800">
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-accent-dark">
                 <Compass aria-hidden="true" size={21} />
               </span>
               <div>
