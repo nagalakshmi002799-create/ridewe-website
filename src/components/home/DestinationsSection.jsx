@@ -69,22 +69,22 @@ export function DestinationsSection() {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col gap-5 rounded-2xl border border-dashed border-slate-300 bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="flex flex-col gap-5 rounded-[1.75rem] border border-dashed border-slate-300 bg-gradient-to-br from-white to-[#f3f9f7] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="flex items-start gap-4">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-accent-dark">
-                <Compass aria-hidden="true" size={21} />
+              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#e8f7f6] text-[#007a83]">
+                <Compass aria-hidden="true" size={22} />
               </span>
               <div>
                 <h3 className="font-semibold text-brand">
-                  Destination details are being prepared.
+                  South India, your way.
                 </h3>
                 <p className="mt-1 max-w-xl text-sm leading-6 text-slate-600">
-                  Contact RideWe to discuss the places you have in mind.
+                  Tell us where you want to go and RideWe can help shape the route around your plans.
                 </p>
               </div>
             </div>
             <WhatsAppButton className="shrink-0" variant="outline">
-              Share a destination
+              Plan a journey
               <ArrowRight aria-hidden="true" size={16} />
             </WhatsAppButton>
           </div>

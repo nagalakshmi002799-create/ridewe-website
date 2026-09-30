@@ -66,9 +66,9 @@ export function TripPlanningCta() {
             </a>
           </Button>
           <WhatsAppButton
-            className="border-white/25 bg-transparent text-white hover:bg-white/10"
+            className="border-white bg-white text-brand hover:border-[#7ae3d6] hover:bg-[#f5f8f7]"
             size="lg"
-            variant="outline"
+            variant="secondary"
           >
             WhatsApp Us
           </WhatsAppButton>
