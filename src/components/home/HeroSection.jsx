@@ -72,9 +72,8 @@ export function HeroSection() {
               </a>
             </Button>
             <WhatsAppButton
-              className="border-white bg-white text-brand hover:border-[#7ae3d6] hover:bg-[#f5f8f7]"
               size="lg"
-              variant="secondary"
+              variant="whatsapp"
             >
               WhatsApp Us
             </WhatsAppButton>

@@ -68,7 +68,7 @@ export function SiteFooter() {
               <Phone aria-hidden="true" className="text-accent" size={16} />
               {PHONE_NUMBER}
             </a>
-            <WhatsAppButton className="mt-1 w-fit" size="sm" variant="secondary">
+            <WhatsAppButton className="mt-1 w-fit" variant="whatsapp">
               WhatsApp RideWe
             </WhatsAppButton>
           </div>

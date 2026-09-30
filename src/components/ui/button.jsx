@@ -12,6 +12,8 @@ const buttonVariants = cva(
           "bg-gradient-to-r from-accent to-[#35D45B] text-brand hover:brightness-95",
         secondary:
           "border border-accent/30 bg-white text-brand hover:border-accent/60 hover:bg-brand-soft",
+        whatsapp:
+          "border border-[#7AE3D6] bg-white text-[#0B0D0F] hover:border-[#00A9B5] hover:bg-[#F5F8F7] hover:text-[#0B0D0F] focus-visible:ring-[#00A9B5]",
         outline:
           "border border-slate-300 bg-transparent text-brand hover:border-accent/50 hover:bg-brand-soft",
         ghost: "text-slate-700 hover:bg-slate-100",

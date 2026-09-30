@@ -47,6 +47,28 @@ a {
   text-decoration: none;
 }
 
+.whatsapp-cta.whatsapp-cta {
+  background-color: #ffffff;
+  border-color: #00a9b5;
+  color: #0b0d0f;
+}
+
+.whatsapp-cta.whatsapp-cta:hover {
+  background-color: #f5f8f7;
+  border-color: #00a9b5;
+  color: #0b0d0f;
+}
+
+.whatsapp-cta.whatsapp-cta:focus-visible {
+  outline: 2px solid #35d45b;
+  outline-offset: 2px;
+}
+
+.whatsapp-cta.whatsapp-cta svg {
+  color: #00a9b5;
+  flex-shrink: 0;
+}
+
 ::selection {
   color: #0b0d0f;
   background: #b8f1d0;
