@@ -95,9 +95,12 @@ export function TariffPreview() {
                 the applicable tariff with you directly.
               </p>
               <WhatsAppButton
-                className="mt-5"
+                className="mt-5 bg-gradient-to-r from-[#007a83] to-[#176b36] text-white hover:brightness-95 hover:text-white"
+                iconClassName="brightness-0 invert"
                 message="Hi RideWe, please share current tariff information for my trip."
                 size="sm"
+                style={{ color: "#fff" }}
+                style={{ color: "#fff" }}
               >
                 Enquire on WhatsApp
               </WhatsAppButton>

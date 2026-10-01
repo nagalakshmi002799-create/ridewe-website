@@ -66,6 +66,8 @@ export function TripPlanningCta() {
             </a>
           </Button>
           <WhatsAppButton
+            gradientIcon
+            gradientText
             size="lg"
             variant="whatsapp"
           >

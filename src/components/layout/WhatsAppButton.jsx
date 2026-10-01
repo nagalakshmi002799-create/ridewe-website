@@ -6,6 +6,11 @@ export function WhatsAppButton({
   children = "WhatsApp",
   className,
   contact = primaryContact,
+  ariaLabel,
+  iconSrc = `${import.meta.env.BASE_URL}brand/whatsapp.svg`,
+  iconClassName,
+  gradientIcon = false,
+  gradientText = false,
   message,
   variant,
   ...props
@@ -27,18 +32,43 @@ export function WhatsAppButton({
       {...props}
     >
       <a
-        aria-label={`Contact ${contact.name} at ${contact.phone} on WhatsApp`}
+        aria-label={
+          ariaLabel ?? `Contact ${contact.name} at ${contact.phone} on WhatsApp`
+        }
         href={href}
         rel="noopener noreferrer"
         target="_blank"
       >
-        <img
-          alt=""
-          aria-hidden="true"
-          className="size-4 shrink-0"
-          src={`${import.meta.env.BASE_URL}brand/whatsapp.svg`}
-        />
-        {children}
+        {gradientIcon ? (
+          <span
+            aria-hidden="true"
+            className="size-4 shrink-0 bg-gradient-to-r from-accent to-[#35D45B]"
+            style={{
+              maskImage: `url("${iconSrc}")`,
+              maskPosition: "center",
+              maskRepeat: "no-repeat",
+              maskSize: "contain",
+              WebkitMaskImage: `url("${iconSrc}")`,
+              WebkitMaskPosition: "center",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskSize: "contain",
+            }}
+          />
+        ) : (
+          <img
+            alt=""
+            aria-hidden="true"
+            className={cn("size-4 shrink-0", iconClassName)}
+            src={iconSrc}
+          />
+        )}
+        {gradientText ? (
+          <span className="bg-gradient-to-r from-accent to-[#35D45B] bg-clip-text text-transparent">
+            {children}
+          </span>
+        ) : (
+          children
+        )}
       </a>
     </Button>
   );

@@ -145,8 +145,8 @@ export function TripPlannerPanel() {
             >
               <option value="">Choose a vehicle (optional)</option>
               {vehicles.map((vehicle) => (
-                <option key={vehicle.id} value={vehicle.name}>
-                  {vehicle.name}
+                <option key={vehicle.id} value={vehicle.displayName}>
+                  {vehicle.displayName}
                 </option>
               ))}
             </select>
