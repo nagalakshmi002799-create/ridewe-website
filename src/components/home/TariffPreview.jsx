@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeIndianRupee, MessageCircle } from "lucide-react";
+import { ArrowRight, BadgeIndianRupee } from "lucide-react";
 import { tariffs } from "../../data/tariffs.js";
 import { formatRupees } from "../../utils/currency.js";
 import { Container } from "../layout/Container.jsx";
@@ -99,7 +99,6 @@ export function TariffPreview() {
                 message="Hi RideWe, please share current tariff information for my trip."
                 size="sm"
               >
-                <MessageCircle aria-hidden="true" size={16} />
                 Enquire on WhatsApp
               </WhatsAppButton>
             </div>

@@ -1,8 +1,9 @@
-import { ArrowUpRight, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { homepageNavigation } from "../../data/homepage.js";
-import { PHONE_NUMBER, PHONE_TEL } from "../../utils/contact.js";
+import { primaryContact, secondaryContacts } from "../../utils/contact.js";
 import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { Container } from "./Container.jsx";
+import { PhoneButton } from "./PhoneButton.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
 import { JourneyRoute } from "../home/JourneyRoute.jsx";
 
@@ -56,21 +57,100 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-sm font-semibold text-white">Get in touch</h2>
-          <div className="mt-3 grid gap-3 text-sm text-white/70">
+          <div className="mt-3 grid gap-4 text-sm text-white/70">
             <p className="flex items-center gap-2">
               <MapPin aria-hidden="true" className="shrink-0 text-accent" size={16} />
               Madurai, Tamil Nadu, India
             </p>
-            <a
-              className="flex w-fit items-center gap-2 rounded-sm hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              href={PHONE_TEL}
-            >
-              <Phone aria-hidden="true" className="text-accent" size={16} />
-              {PHONE_NUMBER}
-            </a>
-            <WhatsAppButton className="mt-1 w-fit" variant="whatsapp">
-              WhatsApp RideWe
-            </WhatsAppButton>
+            {[primaryContact, ...secondaryContacts].map((contact, index) => (
+              <div key={contact.phone}>
+                <p className="text-xs font-semibold text-white/55">
+                  {index === 0 ? "Primary contact" : `Additional contact ${index}`}
+                </p>
+                {index === 0 ? (
+                  <>
+                    <a
+                      className="mt-1 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-semibold text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      href={contact.phoneHref}
+                      style={{ color: "#fff" }}
+                    >
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        className="size-4"
+                        src={`${import.meta.env.BASE_URL}brand/phone-handset.svg`}
+                      />
+                      {contact.phone}
+                    </a>
+                    <div className="mt-1 flex gap-2">
+                      <PhoneButton
+                        className="dark-contact header-call-contact flex-1 px-3"
+                        contact={contact}
+                        variant="darkContact"
+                      >
+                        Call
+                      </PhoneButton>
+                      <WhatsAppButton
+                        className="flex-1 px-3"
+                        contact={contact}
+                        variant="lightContact"
+                      >
+                        WhatsApp
+                      </WhatsAppButton>
+                    </div>
+                  </>
+                ) : (
+                  <div className="mt-1 flex min-h-12 items-center justify-between gap-2">
+                    <a
+                      className="inline-flex min-w-0 items-center gap-1.5 rounded-sm text-sm font-medium text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      href={contact.phoneHref}
+                    >
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        className="size-3.5 shrink-0"
+                        src={`${import.meta.env.BASE_URL}brand/phone-handset.svg`}
+                      />
+                      {contact.phone}
+                    </a>
+                    <div className="flex shrink-0 items-center gap-1">
+                      <a
+                        aria-label={`Call ${contact.phone}`}
+                        className="group grid size-12 place-items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                        href={contact.phoneHref}
+                        title={`Call ${contact.phone}`}
+                      >
+                        <span className="grid size-10 place-items-center rounded-full border border-white/25 bg-white/5 transition-colors group-hover:border-accent group-hover:bg-white/10">
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            className="size-[18px]"
+                            src={`${import.meta.env.BASE_URL}brand/phone-handset.svg`}
+                          />
+                        </span>
+                      </a>
+                      <a
+                        aria-label={`WhatsApp ${contact.phone}`}
+                        className="group grid size-12 place-items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#35D45B] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                        href={contact.whatsappHref}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        title={`WhatsApp ${contact.phone}`}
+                      >
+                        <span className="grid size-10 place-items-center rounded-full border border-white/25 bg-white/5 transition-colors group-hover:border-[#35D45B] group-hover:bg-white/10">
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            className="size-5"
+                            src={`${import.meta.env.BASE_URL}brand/whatsapp.svg`}
+                          />
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </Container>

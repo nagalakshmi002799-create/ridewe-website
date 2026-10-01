@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { homepageNavigation } from "../../data/homepage.js";
-import { PHONE_NUMBER, PHONE_TEL } from "../../utils/contact.js";
+import { primaryContact } from "../../utils/contact.js";
 import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { Button } from "../ui/button.jsx";
 import { Container } from "./Container.jsx";
@@ -74,22 +74,29 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
-          <PhoneButton className="hidden sm:inline-flex" size="sm">
+          <PhoneButton
+            className="dark-contact header-call-contact hidden sm:inline-flex"
+            variant="darkContact"
+          >
             Call
           </PhoneButton>
           <a
-            aria-label={`Call RideWe at ${PHONE_NUMBER}`}
-            className="grid size-10 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-brand transition-colors hover:border-accent/40 hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:hidden"
-            href={PHONE_TEL}
+            aria-label={`Call ${primaryContact.name} at ${primaryContact.phone}`}
+            className="dark-contact header-call-contact grid size-12 shrink-0 place-items-center rounded-xl border border-white/20 bg-[#0B0D0F] text-white transition-colors hover:border-accent hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:hidden"
+            href={primaryContact.phoneHref}
           >
-            <Phone aria-hidden="true" size={17} />
+            <img
+              alt=""
+              aria-hidden="true"
+              className="size-[17px]"
+              src={`${import.meta.env.BASE_URL}brand/phone-handset.svg`}
+            />
           </a>
           <WhatsAppButton
-            className="min-h-10 px-3 sm:px-4"
-            size="sm"
-            variant="primary"
+            className="px-3 sm:px-4"
+            variant="lightContact"
           >
-            <span className="hidden sm:inline">WhatsApp Us</span>
+            <span className="hidden sm:inline">WhatsApp</span>
             <span className="sm:hidden max-[380px]:hidden">Chat</span>
           </WhatsAppButton>
           <Button

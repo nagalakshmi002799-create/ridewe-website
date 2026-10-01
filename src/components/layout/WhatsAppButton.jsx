@@ -1,33 +1,43 @@
-import { MessageCircle } from "lucide-react";
 import { Button } from "../ui/button.jsx";
-import { WHATSAPP_URL } from "../../utils/contact.js";
+import { primaryContact } from "../../utils/contact.js";
 import { cn } from "../../lib/cn.js";
 
 export function WhatsAppButton({
   children = "WhatsApp",
   className,
+  contact = primaryContact,
   message,
   variant,
   ...props
 }) {
   const href = message
-    ? `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`
-    : WHATSAPP_URL;
+    ? `${contact.whatsappHref}?text=${encodeURIComponent(message)}`
+    : contact.whatsappHref;
 
   return (
     <Button
       asChild
-      className={cn(variant === "whatsapp" && "whatsapp-cta", className)}
+      className={cn(
+        variant === "whatsapp" && "whatsapp-cta",
+        variant === "darkContact" && "dark-contact",
+        variant === "lightContact" && "light-contact",
+        className,
+      )}
       variant={variant}
       {...props}
     >
       <a
-        aria-label="Contact RideWe on WhatsApp"
+        aria-label={`Contact ${contact.name} at ${contact.phone} on WhatsApp`}
         href={href}
         rel="noopener noreferrer"
         target="_blank"
       >
-        <MessageCircle aria-hidden="true" size={16} />
+        <img
+          alt=""
+          aria-hidden="true"
+          className="size-4 shrink-0"
+          src={`${import.meta.env.BASE_URL}brand/whatsapp.svg`}
+        />
         {children}
       </a>
     </Button>

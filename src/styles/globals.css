@@ -69,6 +69,75 @@ a {
   flex-shrink: 0;
 }
 
+.dark-contact img {
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
+.dark-contact {
+  min-height: 48px;
+  height: 48px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 0.75rem;
+  background-color: #0b0d0f;
+  color: #fff;
+}
+
+.dark-contact:hover {
+  border-color: #00a9b5;
+  background-color: #151a1d;
+  color: #fff;
+}
+
+.dark-contact:focus-visible {
+  outline: 2px solid #00a9b5;
+  outline-offset: 2px;
+}
+
+.header-call-contact {
+  background-color: transparent;
+  background-image: linear-gradient(to right in oklab, var(--color-accent) 0%, #35d45b 100%);
+  border-color: var(--color-accent-dark);
+  color: #fff;
+}
+
+.header-call-contact:hover {
+  background-color: transparent;
+  background-image: linear-gradient(to right in oklab, var(--color-accent) 0%, #35d45b 100%);
+  border-color: var(--color-accent);
+  color: #fff;
+  filter: brightness(0.95);
+}
+
+.header-call-contact:focus-visible {
+  outline: 2px solid var(--color-accent-dark);
+  outline-offset: 2px;
+}
+
+.light-contact {
+  min-height: 48px;
+  height: 48px;
+  border: 1px solid rgb(0 169 181 / 50%);
+  border-radius: 0.75rem;
+  background-color: #fff;
+  color: #007a83;
+}
+
+.light-contact img {
+  flex-shrink: 0;
+}
+
+.light-contact:hover {
+  border-color: #00a9b5;
+  background-color: #e8f7f6;
+  color: #007a83;
+}
+
+.light-contact:focus-visible {
+  outline: 2px solid #00a9b5;
+  outline-offset: 2px;
+}
+
 ::selection {
   color: #0b0d0f;
   background: #b8f1d0;

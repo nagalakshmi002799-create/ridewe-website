@@ -14,6 +14,10 @@ const buttonVariants = cva(
           "border border-accent/30 bg-white text-brand hover:border-accent/60 hover:bg-brand-soft",
         whatsapp:
           "border border-[#7AE3D6] bg-white text-[#0B0D0F] hover:border-[#00A9B5] hover:bg-[#F5F8F7] hover:text-[#0B0D0F] focus-visible:ring-[#00A9B5]",
+        darkContact:
+          "min-h-12 rounded-xl border border-white/20 bg-[#0B0D0F] px-4 py-2.5 text-white hover:border-accent hover:bg-brand-dark hover:text-white focus-visible:ring-accent",
+        lightContact:
+          "min-h-12 rounded-xl border border-accent/50 bg-white px-4 py-2.5 text-accent-dark hover:border-accent hover:bg-brand-soft hover:text-accent-dark focus-visible:ring-accent",
         outline:
           "border border-slate-300 bg-transparent text-brand hover:border-accent/50 hover:bg-brand-soft",
         ghost: "text-slate-700 hover:bg-slate-100",

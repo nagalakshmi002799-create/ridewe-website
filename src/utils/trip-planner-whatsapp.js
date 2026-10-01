@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "./contact.js";
+import { primaryContact } from "./contact.js";
 
 export function buildTripPlannerMessage({
   destination,
@@ -25,7 +25,7 @@ export function buildTripPlannerMessage({
 }
 
 export function buildTripPlannerWhatsAppUrl(message) {
-  const url = new URL(WHATSAPP_URL);
+  const url = new URL(primaryContact.whatsappHref);
   url.searchParams.set("text", message);
   return url.toString();
 }

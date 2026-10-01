@@ -1,16 +1,24 @@
-import { Phone } from "lucide-react";
 import { Button } from "../ui/button.jsx";
-import { PHONE_NUMBER, PHONE_TEL } from "../../utils/contact.js";
+import { primaryContact } from "../../utils/contact.js";
 
 export function PhoneButton({
-  children = PHONE_NUMBER,
+  children,
+  contact = primaryContact,
   ...props
 }) {
   return (
     <Button asChild variant="secondary" {...props}>
-      <a aria-label={`Call RideWe at ${PHONE_NUMBER}`} href={PHONE_TEL}>
-        <Phone aria-hidden="true" size={16} />
-        {children}
+      <a
+        aria-label={`Call ${contact.name} at ${contact.phone}`}
+        href={contact.phoneHref}
+      >
+        <img
+          alt=""
+          aria-hidden="true"
+          className="size-4"
+          src={`${import.meta.env.BASE_URL}brand/phone-handset.svg`}
+        />
+        {children ?? contact.phone}
       </a>
     </Button>
   );
