@@ -2,6 +2,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { homepageNavigation } from "../../data/homepage.js";
 import { primaryContact, secondaryContacts } from "../../utils/contact.js";
+import { scrollToTop } from "../../utils/scroll-to-top.js";
 import { Container } from "./Container.jsx";
 import { PhoneButton } from "./PhoneButton.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
@@ -156,12 +157,14 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <Container className="flex flex-col gap-2 py-4 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>Ride Together for Better Experiences.</p>
-          <Link
+          <button
+            aria-label="Back to top"
             className="inline-flex w-fit items-center gap-1 rounded-sm hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            to="/"
+            onClick={() => scrollToTop({ smooth: true })}
+            type="button"
           >
             Back to top <ArrowUpRight aria-hidden="true" size={14} />
-          </Link>
+          </button>
         </Container>
       </div>
     </footer>

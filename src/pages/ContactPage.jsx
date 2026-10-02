@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { Button } from "../components/ui/button.jsx";
 import { Container } from "../components/layout/Container.jsx";
+import { PhoneButton } from "../components/layout/PhoneButton.jsx";
 import { Section } from "../components/layout/Section.jsx";
 import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
 import { primaryContact, secondaryContacts } from "../utils/contact.js";
@@ -20,21 +19,13 @@ export function ContactPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <h2 className="text-lg font-bold text-brand">Primary contact</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              <a className="font-semibold text-brand hover:underline" href={primaryContact.phoneHref}>
+              <a
+                className="font-semibold text-brand hover:underline"
+                href={primaryContact.phoneHref}
+              >
                 {primaryContact.phone}
               </a>
             </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a
-                className="inline-flex items-center rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
-                href={primaryContact.phoneHref}
-              >
-                Call Now
-              </a>
-              <WhatsAppButton className="inline-flex" variant="outline">
-                WhatsApp
-              </WhatsAppButton>
-            </div>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
@@ -42,10 +33,18 @@ export function ContactPage() {
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
               {secondaryContacts.map((contact) => (
                 <li key={contact.phone} className="flex flex-col gap-1">
-                  <a className="font-semibold text-brand hover:underline" href={contact.phoneHref}>
+                  <a
+                    className="font-semibold text-brand hover:underline"
+                    href={contact.phoneHref}
+                  >
                     {contact.phone}
                   </a>
-                  <a className="text-xs text-slate-500 hover:underline" href={contact.whatsappHref} rel="noopener noreferrer" target="_blank">
+                  <a
+                    className="text-xs text-slate-500 hover:underline"
+                    href={contact.whatsappHref}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     WhatsApp {contact.phone}
                   </a>
                 </li>
@@ -62,12 +61,18 @@ export function ContactPage() {
             next step.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link to="/services">See our services</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/vehicles-tariff">View vehicles &amp; tariff</Link>
-            </Button>
+            <PhoneButton
+              ariaLabel={`Call ${primaryContact.name} at ${primaryContact.phone}`}
+              className="h-10 min-h-10 rounded-md bg-gradient-to-r from-accent to-[#35D45B] px-4 py-2.5 text-sm text-white hover:brightness-95 hover:text-white"
+              iconClassName="brightness-0 invert"
+              style={{ color: "#fff" }}
+              variant="primary"
+            >
+              Call Now
+            </PhoneButton>
+            <WhatsAppButton className="inline-flex" variant="outline">
+              WhatsApp
+            </WhatsAppButton>
           </div>
         </div>
       </Container>
