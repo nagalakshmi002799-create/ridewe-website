@@ -6,7 +6,9 @@ import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
 import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { TripPlannerPanel } from "./TripPlannerPanel.jsx";
 
-const heroBackground = `${import.meta.env.BASE_URL}images/hero-south-india.svg`;
+const homeImages = `${import.meta.env.BASE_URL}images/home`;
+const ciazImage = `${import.meta.env.BASE_URL}images/vehicles/ciaz.png`;
+const rideweLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`;
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
@@ -21,12 +23,59 @@ export function HeroSection() {
         alt=""
         animate={reduceMotion ? undefined : { scale: 1.035, x: [0, -5, 0] }}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 size-full object-cover object-[center_22%]"
-        src={heroBackground}
+        className="pointer-events-none absolute inset-0 size-full object-cover object-[center_56%]"
+        src={`${homeImages}/munnar-mountains.webp`}
         transition={{ duration: 24, ease: "easeInOut", repeat: Infinity }}
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/20" />
-      <Container className="relative grid items-center gap-7 py-9 sm:py-12 lg:min-h-[410px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-6">
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-0 h-full w-[65%] object-cover object-[center_62%] sm:w-[56%]"
+        loading="eager"
+        src={`${import.meta.env.BASE_URL}images/destinations/kerala-coast.webp`}
+        style={{
+          maskImage: "linear-gradient(90deg, #000 0%, #000 54%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 54%, transparent 100%)",
+        }}
+      />
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-[38%] hidden h-full w-[28%] object-cover object-[center_18%] md:block"
+        loading="eager"
+        src={`${homeImages}/madurai-meenakshi.webp`}
+        style={{
+          maskImage: "linear-gradient(90deg, transparent 0%, #000 18%, #000 76%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 18%, #000 76%, transparent 100%)",
+        }}
+      />
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 h-full w-[64%] object-cover object-[center_60%] sm:w-[55%]"
+        loading="eager"
+        src={`${homeImages}/munnar-road.webp`}
+        style={{
+          maskImage: "linear-gradient(270deg, #000 0%, #000 48%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(270deg, #000 0%, #000 48%, transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/70 via-white/45 to-white/10"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 right-[2%] z-0 hidden w-[clamp(145px,17vw,220px)] sm:block"
+      >
+        <img alt="" className="block w-full object-contain" src={ciazImage} />
+        <img
+          alt=""
+          className="absolute bottom-[34%] left-[31%] w-[19%] object-contain"
+          src={rideweLogo}
+        />
+      </div>
+      <Container className="relative z-10 grid items-center gap-7 py-9 sm:py-12 lg:min-h-[410px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-6">
         <motion.div
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           className="relative z-10 max-w-[590px]"

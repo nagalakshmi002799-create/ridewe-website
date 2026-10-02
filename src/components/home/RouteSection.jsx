@@ -1,7 +1,7 @@
 import { Container } from "../layout/Container.jsx";
 import { JourneyRoute } from "./JourneyRoute.jsx";
 
-const routeBackground = `${import.meta.env.BASE_URL}images/hero-south-india.svg`;
+const routeBackground = `${import.meta.env.BASE_URL}images/home/munnar-mountains.webp`;
 
 export function RouteSection() {
   return (
@@ -12,10 +12,13 @@ export function RouteSection() {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-cover bg-[center_15%] opacity-[0.12]"
+        className="absolute inset-0 -z-10 bg-cover bg-[center_52%] opacity-55"
         style={{ backgroundImage: `url("${routeBackground}")` }}
       />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-white/90 via-[#edfaff]/85 to-white/60" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-white/76 via-[#edfaff]/62 to-[#effaf3]/50"
+      />
       <Container className="relative grid gap-5 lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
         <div>
           <div>

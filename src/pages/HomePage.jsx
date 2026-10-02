@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, Mountain, Waves } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { destinations } from "../data/destinations.js";
 import { HeroSection } from "../components/home/HeroSection.jsx";
@@ -12,76 +12,29 @@ import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { primaryContact } from "../utils/contact.js";
 
-const destinationIcons = {
-  madurai: Landmark,
-  kodaikanal: Mountain,
-  munnar: Waves,
+const imageUrl = (path) => `${import.meta.env.BASE_URL}images/${path}`;
+const rideweLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`;
+
+const destinationImages = {
+  madurai: "home/madurai-meenakshi.webp",
+  kodaikanal: "destinations/kodaikanal.webp",
+  munnar: "home/munnar-mountains.webp",
 };
 
-function HeritageIllustration() {
-  return (
-    <svg
-      aria-label="Illustration of Madurai heritage architecture, including a temple tower, palace and church"
-      className="h-full w-full"
-      role="img"
-      viewBox="0 0 620 260"
-    >
-      <defs>
-        <linearGradient id="heritage-sky" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="#d8f1ef" />
-          <stop offset="100%" stopColor="#fff5df" />
-        </linearGradient>
-        <linearGradient id="heritage-tower" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#e8a94c" />
-          <stop offset="100%" stopColor="#d77f45" />
-        </linearGradient>
-      </defs>
-      <path d="M0 0h620v260H0z" fill="url(#heritage-sky)" />
-      <path d="M0 209c99-28 176-22 258 7 113-36 224-33 362 2v42H0z" fill="#78a579" />
-      <path d="M0 231c94-24 167-15 242 11 115-26 254-21 378 1v17H0z" fill="#477b63" />
-      <g fill="#34745f">
-        <path d="M39 193c11-33 7-61-7-84 23 16 34 44 25 82z" />
-        <path d="M52 173c-1-30 14-53 42-68-17 24-24 45-27 73z" />
-        <path d="M563 193c11-35 6-63-9-88 25 19 34 46 24 85z" />
-        <path d="M578 171c1-31 18-54 43-67-16 22-24 45-27 74z" />
-      </g>
-      <g stroke="#bf7544" strokeWidth="2">
-        <path d="M75 203V93l45-57 45 57v110z" fill="url(#heritage-tower)" />
-        <path d="M82 105h76M80 128h80M78 152h84M76 177h88" fill="none" />
-        <path d="M90 103v18m28-18v18m28-18v18M87 129v20m31-20v20m30-20v20M84 154v21m34-21v21m34-21v21" fill="none" />
-        <path d="M94 202v-18a10 10 0 0 1 20 0v18m24 0v-18a10 10 0 0 1 20 0v18" fill="#f8dfb4" />
-      </g>
-      <g fill="#f1c77e" stroke="#bc8852" strokeWidth="2">
-        <path d="M227 202v-72l38-37 38 37v72z" />
-        <path d="M216 132h98M231 120l34-37 34 37" />
-        <path d="M244 202v-31a21 21 0 0 1 42 0v31z" fill="#fff2d8" />
-        <path d="M252 201v-25a13 13 0 0 1 26 0v25" fill="none" />
-      </g>
-      <g fill="#fbf7e9" stroke="#688b83" strokeWidth="2">
-        <path d="M408 202v-91h55v91z" />
-        <path d="M404 112h64l-32-29z" />
-        <path d="M425 111V70l10-17 10 17v41" />
-        <path d="M427 197v-27a9 9 0 0 1 18 0v27z" fill="#b5d8d2" />
-        <path d="M435 45v-25m-10 12h20" fill="none" />
-      </g>
-      <g fill="#fff6d8" opacity=".76">
-        <circle cx="200" cy="54" r="18" />
-        <circle cx="200" cy="54" r="27" opacity=".38" />
-      </g>
-    </svg>
-  );
-}
-
 function DestinationPreviewCard({ destination }) {
-  const Icon = destinationIcons[destination.id] ?? Landmark;
+  const image = destinationImages[destination.id];
 
   return (
     <article className="overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)]">
-      <div className="relative grid aspect-[1.7/1] place-items-center overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce]">
-        <span aria-hidden="true" className="absolute -bottom-10 left-1/2 size-36 -translate-x-1/2 rounded-full border-[14px] border-white/30" />
-        <span className="relative grid size-14 place-items-center rounded-full border border-white/80 bg-white/75 text-[#00a58f] shadow-sm">
-          <Icon aria-hidden="true" size={30} strokeWidth={1.6} />
-        </span>
+      <div className="relative aspect-[1.7/1] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce]">
+        {image ? (
+          <img
+            alt={`Travel scenery in ${destination.name}`}
+            className="absolute inset-0 size-full object-cover"
+            loading="lazy"
+            src={imageUrl(image)}
+          />
+        ) : null}
         <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#063f5f]/85 to-transparent px-3 pb-2 pt-7 text-sm font-bold text-white">
           {destination.name}
         </p>
@@ -102,8 +55,29 @@ export function HomePage() {
 
       <section aria-labelledby="about-preview-title" className="bg-white py-6 sm:py-7 lg:py-8" id="about-preview">
         <Container className="grid items-center gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
-          <div className="h-[145px] overflow-hidden rounded-2xl sm:h-[180px] lg:h-[170px]">
-            <HeritageIllustration />
+          <div
+            aria-label="Madurai heritage, including Meenakshi Amman Temple, Thirumalai Nayakkar Mahal and St Mary's Cathedral"
+            className="grid h-[145px] grid-cols-[1.2fr_0.8fr] grid-rows-2 gap-1.5 overflow-hidden rounded-2xl bg-[#e8f7f4] sm:h-[180px] lg:h-[170px]"
+            role="group"
+          >
+            <img
+              alt="Meenakshi Amman Temple in Madurai"
+              className="row-span-2 size-full min-h-0 object-cover object-[center_27%]"
+              loading="lazy"
+              src={imageUrl("home/madurai-meenakshi.webp")}
+            />
+            <img
+              alt="Thirumalai Nayakkar Mahal in Madurai"
+              className="size-full min-h-0 object-cover object-[center_38%]"
+              loading="lazy"
+              src={imageUrl("home/madurai-mahal.webp")}
+            />
+            <img
+              alt="St Mary's Cathedral in Madurai"
+              className="size-full min-h-0 object-cover object-[center_25%]"
+              loading="lazy"
+              src={imageUrl("home/madurai-cathedral.webp")}
+            />
           </div>
           <div className="border-l-0 border-[#dce9e9] lg:border-l lg:pl-8">
             <SectionIntro
@@ -137,7 +111,20 @@ export function HomePage() {
 
       <VehiclesSection preview />
 
-      <section aria-labelledby="destinations-preview-title" className="bg-[#f0f9fa] py-6 sm:py-7 lg:py-8" id="destinations-preview">
+      <section
+        aria-labelledby="destinations-preview-title"
+        className="relative isolate overflow-hidden bg-[#f0f9fa] py-6 sm:py-7 lg:py-8"
+        id="destinations-preview"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 bg-cover bg-[center_56%] opacity-60"
+          style={{ backgroundImage: `url("${imageUrl("home/coorg-hills.webp")}")` }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#edf9fb]/72 via-[#ebf8f4]/65 to-white/68"
+        />
         <Container className="grid gap-5 lg:grid-cols-[0.78fr_2.22fr] lg:items-center">
           <div>
             <SectionIntro
@@ -168,12 +155,15 @@ export function HomePage() {
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-20 bg-cover bg-[center_10%] opacity-60"
+          className="absolute inset-0 -z-20 bg-cover bg-[center_68%]"
           style={{
-            backgroundImage: `url("${import.meta.env.BASE_URL}images/hero-south-india.svg")`,
+            backgroundImage: `url("${imageUrl("home/munnar-road.webp")}")`,
           }}
         />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#07385c]/95 via-[#075276]/80 to-[#07385c]/35" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#07385c]/90 via-[#075276]/70 to-[#07385c]/30"
+        />
         <Container className="relative grid items-center gap-5 lg:grid-cols-[1fr_0.7fr]">
           <div className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#5de1ce]">
@@ -203,14 +193,22 @@ export function HomePage() {
               </Button>
             </div>
           </div>
-          <img
-            alt="RideWe white Ciaz vehicle"
-            className="hidden max-h-[190px] w-full object-contain object-right drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)] lg:block"
-            height="940"
-            loading="lazy"
-            src={`${import.meta.env.BASE_URL}images/vehicles/ciaz.png`}
-            width="1672"
-          />
+          <div className="relative hidden max-h-[190px] w-full lg:block">
+            <img
+              alt="RideWe-branded white Ciaz vehicle"
+              className="block max-h-[190px] w-full object-contain object-right drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)]"
+              height="940"
+              loading="lazy"
+              src={`${import.meta.env.BASE_URL}images/vehicles/ciaz.png`}
+              width="1672"
+            />
+            <img
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-[37%] right-[55%] w-[12%] object-contain"
+              src={rideweLogo}
+            />
+          </div>
         </Container>
       </section>
     </>

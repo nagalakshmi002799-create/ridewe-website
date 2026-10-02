@@ -34,6 +34,12 @@ const routePoints = routeSegments.flatMap((segment) =>
 routePoints.push(routeSegments[routeSegments.length - 1][3]);
 const staticVehiclePosition = routePoints[Math.floor(routePoints.length / 2)];
 const routeVehicle = `${import.meta.env.BASE_URL}images/vehicles/ciaz.png`;
+const rideweLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`;
+const destinationImages = [
+  `${import.meta.env.BASE_URL}images/home/madurai-meenakshi.webp`,
+  `${import.meta.env.BASE_URL}images/destinations/kerala-coast.webp`,
+  `${import.meta.env.BASE_URL}images/home/coorg-hills.webp`,
+];
 
 export function JourneyRoute({
   animated = true,
@@ -62,18 +68,6 @@ export function JourneyRoute({
           <linearGradient id={gradientId} x1="0" x2="1">
             <stop offset="0%" stopColor="#00A9B5" />
             <stop offset="100%" stopColor="#35D45B" />
-          </linearGradient>
-          <linearGradient id={`${gradientId}-madurai`} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#bde9f2" />
-            <stop offset="100%" stopColor="#fff0c7" />
-          </linearGradient>
-          <linearGradient id={`${gradientId}-kerala`} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#bcecf0" />
-            <stop offset="100%" stopColor="#71c8bc" />
-          </linearGradient>
-          <linearGradient id={`${gradientId}-karnataka`} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#c5eaf4" />
-            <stop offset="100%" stopColor="#a8d6b0" />
           </linearGradient>
           <clipPath id={`${gradientId}-madurai-clip`}>
             <circle cx="150" cy="38" r="36" />
@@ -113,25 +107,34 @@ export function JourneyRoute({
         />
 
         <g clipPath={`url(#${gradientId}-madurai-clip)`}>
-          <circle cx="150" cy="38" fill={`url(#${gradientId}-madurai)`} r="36" />
-          <circle cx="173" cy="16" fill="#fff2b5" opacity=".75" r="8" />
-          <path d="M108 57q42-20 84 0v24h-84z" fill="#8bbf83" />
-          <path d="M131 68V33l19-23 19 23v35z" fill="#d9904d" stroke="#fff1c9" strokeWidth="2" />
-          <path d="M134 39h32m-33 9h34m-34 9h34m-33 9h32" stroke="#fff1c9" strokeWidth="2" />
+          <image
+            href={destinationImages[0]}
+            height="72"
+            preserveAspectRatio="xMidYMid slice"
+            width="72"
+            x="114"
+            y="2"
+          />
         </g>
         <g clipPath={`url(#${gradientId}-kerala-clip)`}>
-          <circle cx="500" cy="38" fill={`url(#${gradientId}-kerala)`} r="36" />
-          <path d="M461 44 480 27l18 17 15-20 27 21v17h-79z" fill="#4e9b76" />
-          <path d="M461 53q38-7 78 0v20h-78z" fill="#56b7bd" />
-          <path d="m486 57 25-2 13 7h-40z" fill="#fff5d6" />
-          <path d="M499 51v11m-12 3q13 4 25 0" fill="none" stroke="#267e72" strokeWidth="2" />
+          <image
+            href={destinationImages[1]}
+            height="72"
+            preserveAspectRatio="xMidYMid slice"
+            width="72"
+            x="464"
+            y="2"
+          />
         </g>
         <g clipPath={`url(#${gradientId}-karnataka-clip)`}>
-          <circle cx="850" cy="38" fill={`url(#${gradientId}-karnataka)`} r="36" />
-          <circle cx="872" cy="17" fill="#fff2b5" opacity=".7" r="8" />
-          <path d="m808 55 23-28 16 17 18-23 29 35v18h-86z" fill="#6aab8b" />
-          <path d="m815 64 29-24 15 14 18-19 26 25v15h-88z" fill="#387b66" />
-          <path d="M808 70q40-10 84 0v10h-84z" fill="#80b878" />
+          <image
+            href={destinationImages[2]}
+            height="72"
+            preserveAspectRatio="xMidYMid slice"
+            width="72"
+            x="814"
+            y="2"
+          />
         </g>
         {[150, 500, 850].map((x, index) => (
           <g key={x}>
@@ -178,7 +181,7 @@ export function JourneyRoute({
           transition={
             shouldAnimate
               ? {
-                  duration: 12,
+                  duration: 24,
                   ease: "linear",
                   repeat: Number.POSITIVE_INFINITY,
                 }
@@ -194,6 +197,14 @@ export function JourneyRoute({
             height="50"
             preserveAspectRatio="xMidYMid meet"
             width="84"
+          />
+          <image
+            href={rideweLogo}
+            height="5"
+            preserveAspectRatio="xMidYMid meet"
+            width="17"
+            x="20"
+            y="27"
           />
         </motion.svg>
       </svg>
