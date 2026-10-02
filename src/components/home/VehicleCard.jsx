@@ -7,17 +7,19 @@ function formatVehicleRupees(amount) {
   return `₹${amount.toLocaleString("en-IN")}`;
 }
 
-export function VehicleCard({ vehicle, className }) {
+export function VehicleCard({ vehicle, className, preview = false }) {
   const [imageError, setImageError] = useState(false);
 
   return (
     <article
       className={cn(
-        "flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white",
+        `flex h-full flex-col overflow-hidden border border-slate-200 bg-white ${
+          preview ? "rounded-xl shadow-[0_8px_26px_-20px_rgba(0,52,94,0.4)]" : "rounded-2xl"
+        }`,
         className,
       )}
     >
-      <div className="relative aspect-[1.7/1] overflow-hidden bg-[#f0f7f5]">
+      <div className={`relative overflow-hidden ${preview ? "aspect-[2/1] bg-white" : "aspect-[1.7/1] bg-[#f0f7f5]"}`}>
         {vehicle.image && !imageError ? (
           <img
             alt={vehicle.imageAlt}
@@ -42,22 +44,22 @@ export function VehicleCard({ vehicle, className }) {
             </div>
           </div>
         )}
-        <span className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-accent to-[#35D45B]" />
+        {!preview ? <span className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-accent to-[#35D45B]" /> : null}
       </div>
-      <div className="flex flex-1 flex-col p-3">
+      <div className={`flex flex-1 flex-col ${preview ? "p-2.5 pt-1.5" : "p-3"}`}>
         <div className="flex items-center justify-between gap-2">
-          <h3 className="text-base font-bold tracking-tight text-brand">
+          <h3 className={`${preview ? "text-sm" : "text-base"} font-bold tracking-tight text-brand`}>
             {vehicle.displayName}
           </h3>
-          <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
+          {!preview ? <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
             <span
               aria-hidden="true"
               className="size-2 rounded-full border border-slate-300 bg-white"
             />
             {vehicle.color}
-          </span>
+          </span> : null}
         </div>
-        <div className="mt-1.5 flex items-center gap-1 text-[11px] font-medium text-slate-600">
+        <div className="mt-1 flex items-center gap-1 text-[10px] font-medium text-slate-600">
           <Snowflake aria-hidden="true" className="shrink-0 text-accent-dark" size={13} />
           <span>AC</span>
           <span aria-hidden="true">·</span>
@@ -65,7 +67,7 @@ export function VehicleCard({ vehicle, className }) {
           <span>{vehicle.seating}</span>
         </div>
 
-        <div className="mt-3 flex-1 space-y-2">
+        {!preview ? <div className="mt-3 flex-1 space-y-2">
           <div className="rounded-lg bg-surface p-2">
             <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-500">
             {vehicle.belowThresholdLabel}
@@ -110,8 +112,8 @@ export function VehicleCard({ vehicle, className }) {
             Hills charge {formatVehicleRupees(vehicle.hillsCharge)}
             {vehicle.hillsChargeExtra ? " extra" : ""}
           </p>
-        </div>
-        <WhatsAppButton
+        </div> : null}
+        {!preview ? <WhatsAppButton
           ariaLabel={`Plan a trip with ${vehicle.displayName} on WhatsApp`}
           className="mt-3 w-full text-white hover:text-white"
           iconClassName="brightness-0 invert"
@@ -121,7 +123,7 @@ export function VehicleCard({ vehicle, className }) {
           style={{ color: "#fff" }}
         >
           Plan My Trip
-        </WhatsAppButton>
+        </WhatsAppButton> : null}
       </div>
     </article>
   );

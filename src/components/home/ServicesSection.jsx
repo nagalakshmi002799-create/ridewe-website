@@ -11,12 +11,12 @@ export function ServicesSection({ compact = false, serviceIds = null }) {
     ? homepageServices.filter((service) => serviceIds.includes(service.id))
     : homepageServices;
 
-  const services = compact ? selectedServices.slice(0, 3) : selectedServices;
+  const services = selectedServices;
 
   return (
     <Section
       aria-labelledby="services-title"
-      className="bg-surface"
+      className={compact ? "bg-[#eff9fa] py-6 sm:py-7 lg:py-8" : "bg-surface"}
       id={compact ? undefined : "services"}
     >
       <Container>
@@ -34,20 +34,21 @@ export function ServicesSection({ compact = false, serviceIds = null }) {
               : "Our Services"
           }
           titleLevel={compact ? "h2" : "h1"}
+          compact={compact}
         />
         {!compact ? (
           <h2 className="mb-8 -mt-4 text-xl font-semibold text-slate-700 sm:text-2xl">
             Travel Solutions Designed Around Your Journey
           </h2>
         ) : null}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {(compact ? services.slice(0, 3) : services).map((service) => (
+        <div className={`grid gap-3 ${compact ? "grid-cols-2 sm:grid-cols-4 lg:grid-cols-7" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
+          {services.map((service) => (
             <ServiceCard compact={compact} key={service.id} service={service} />
           ))}
         </div>
         {compact ? (
-          <div className="mt-8">
-            <Button asChild className="w-fit" variant="outline">
+          <div className="mt-4 flex justify-center sm:mt-5">
+            <Button asChild className="h-9 rounded-full border-[#00a9b5] bg-white px-5 text-sm !text-[#007a83]" variant="outline">
               <Link to="/services">View All Services</Link>
             </Button>
           </div>

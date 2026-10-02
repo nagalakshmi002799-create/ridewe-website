@@ -21,7 +21,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
-      <Container className="flex min-h-16 flex-wrap items-center justify-between gap-x-2 gap-y-3 py-3 lg:min-h-[76px] lg:flex-nowrap lg:gap-x-5">
+      <Container className="flex min-h-16 flex-wrap items-center justify-between gap-x-2 gap-y-3 py-3 xl:min-h-[76px] xl:flex-nowrap xl:gap-x-3 xl:py-2">
         <Link
           aria-label="RideWe Tours & Travels home"
           className="flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -37,10 +37,10 @@ export function SiteHeader() {
           />
           <img
             alt=""
-            className="size-12 object-contain sm:hidden"
-            height="320"
-            src={`${import.meta.env.BASE_URL}brand/ridewe-logo-square.png`}
-            width="320"
+            className="h-10 w-[122px] object-contain sm:hidden"
+            height="136"
+            src={`${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`}
+            width="384"
           />
         </Link>
 
@@ -48,17 +48,19 @@ export function SiteHeader() {
           aria-label="Main navigation"
           className={`${
             menuOpen ? "flex" : "hidden"
-          } order-3 w-full flex-col gap-1 border-t border-slate-200 pt-3 lg:order-none lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-1 lg:border-0 lg:pt-0`}
+          } order-3 w-full flex-col gap-1 border-t border-slate-200 pt-3 xl:order-none xl:flex xl:w-auto xl:shrink-0 xl:flex-row xl:items-center xl:gap-0.5 xl:border-0 xl:pt-0`}
           id="primary-navigation"
           onKeyDown={handleMenuKeyDown}
         >
           {homepageNavigation.map((item) => (
             <NavLink
               className={({ isActive }) =>
-                `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:py-2 ${
+                `group relative whitespace-nowrap rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-2 xl:py-2 xl:text-xs ${
                   isActive
-                    ? "bg-brand-soft text-brand"
-                    : "text-slate-700 hover:bg-brand-soft hover:text-brand"
+                    ? "text-brand"
+                    : "text-slate-700 hover:text-brand"
+                } before:absolute before:-bottom-1 before:left-2 before:right-2 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-accent before:to-[#35D45B] before:transition-transform before:duration-200 before:content-[''] ${
+                  isActive ? "before:scale-x-100" : "before:scale-x-0 group-hover:before:scale-x-100"
                 }`
               }
               end={item.to === "/"}
@@ -72,6 +74,20 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
+          <Button
+            asChild
+            className="hidden shrink-0 whitespace-nowrap bg-gradient-to-r from-accent to-[#35D45B] !text-white shadow-[0_12px_24px_-16px_rgba(0,160,166,0.7)] lg:inline-flex"
+          >
+            <a href="#trip-planner" onClick={(event) => {
+              event.preventDefault();
+              document.getElementById("trip-planner")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}>
+              Plan My Trip
+            </a>
+          </Button>
           <PhoneButton
             className="dark-contact header-call-contact hidden sm:inline-flex"
             variant="darkContact"
@@ -101,7 +117,7 @@ export function SiteHeader() {
             aria-controls="primary-navigation"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="lg:hidden"
+            className="xl:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             ref={menuButtonRef}
             size="icon"

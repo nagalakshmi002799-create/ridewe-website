@@ -95,7 +95,7 @@ export const homepageServices = [
   },
 ];
 
-export const routeStops = ["Madurai", "Kodaikanal", "Munnar", "Ooty"];
+export const routeStops = ["Madurai", "Kerala", "Karnataka"];
 
 export const rideweBenefits = [
   {

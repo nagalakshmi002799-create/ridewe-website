@@ -41,33 +41,33 @@ export function TripPlannerPanel({ className }) {
       )}
       id="trip-planner"
     >
-      <div className="mb-4 flex items-start justify-between gap-3">
+      <div className="mb-3 flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold text-brand">Start planning</p>
-          <p className="mt-1 text-xs leading-5 text-slate-500">
+          <p className="text-base font-bold text-[#0b4775]">Start Planning</p>
+          <p className="mt-0.5 text-xs leading-5 text-slate-500">
             Share a few trip details with RideWe.
           </p>
         </div>
         <span
           aria-hidden="true"
-          className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand-soft text-accent-dark"
+          className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#e3f8f2] text-[#00a98e]"
         >
           <MapPin size={17} />
         </span>
       </div>
 
       <form
-        className="grid gap-3 sm:grid-cols-2"
+        className="grid gap-x-3 gap-y-2.5 sm:grid-cols-2"
         noValidate
         onSubmit={handleSubmit(openWhatsAppAfterValidation)}
       >
         <label className="grid gap-1.5 text-xs font-semibold text-slate-600">
-          From
+          From / Origin
           <input
             aria-invalid={Boolean(errors.origin)}
             aria-describedby={errors.origin ? "origin-error" : undefined}
             autoComplete="address-level2"
-            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+            className="min-h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
             {...register("origin")}
           />
           {errors.origin ? (
@@ -82,7 +82,7 @@ export function TripPlannerPanel({ className }) {
             aria-invalid={Boolean(errors.destination)}
             aria-describedby={errors.destination ? "destination-error" : undefined}
             autoComplete="off"
-            className="min-h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition placeholder:font-normal placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/20"
+            className="min-h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-brand outline-none transition placeholder:font-normal placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/20"
             placeholder="Where would you like to go?"
             {...register("destination")}
           />
@@ -93,7 +93,7 @@ export function TripPlannerPanel({ className }) {
           ) : null}
         </label>
         <label className="grid gap-1.5 text-xs font-semibold text-slate-600">
-          Travel date
+          Travel Date
           <span className="relative">
             <CalendarDays
               aria-hidden="true"
@@ -101,7 +101,7 @@ export function TripPlannerPanel({ className }) {
               size={16}
             />
             <input
-              className="min-h-11 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              className="min-h-10 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               type="date"
               {...register("travelDate")}
             />
@@ -118,7 +118,7 @@ export function TripPlannerPanel({ className }) {
             <select
               aria-invalid={Boolean(errors.travellers)}
               aria-describedby={errors.travellers ? "travellers-error" : undefined}
-              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              className="min-h-10 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               {...register("travellers")}
             >
               <option value="">Select travellers</option>
@@ -136,7 +136,7 @@ export function TripPlannerPanel({ className }) {
           ) : null}
         </label>
         <label className="grid gap-1.5 text-xs font-semibold text-slate-600 sm:col-span-2">
-          Vehicle preference
+          Vehicle Preference
           <span className="relative">
             <CarFront
               aria-hidden="true"
@@ -144,7 +144,7 @@ export function TripPlannerPanel({ className }) {
               size={17}
             />
             <select
-              className="min-h-11 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              className="min-h-10 w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm font-medium text-brand outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               {...register("vehicle")}
             >
               <option value="">Choose a vehicle (optional)</option>
@@ -157,10 +157,10 @@ export function TripPlannerPanel({ className }) {
           </span>
         </label>
         <div className="sm:col-span-2">
-          <Button className="w-full" type="submit">
+          <Button className="h-10 w-full rounded-lg bg-gradient-to-r from-[#078cc5] to-[#31c66a] text-white hover:brightness-105" type="submit">
             Plan My Trip
           </Button>
-          <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
+          <p className="mt-1.5 text-center text-[10px] leading-4 text-slate-500">
             No booking is made here. WhatsApp opens with your message ready for
             you to send.
           </p>

@@ -35,29 +35,30 @@ function VehiclePreviewRail({ vehicles: previewVehicles }) {
   }
 
   return (
-    <div>
-      <div className="mb-3 flex justify-end gap-2">
+    <div className="relative min-w-0">
+      <div className="pointer-events-none absolute inset-x-0 top-[40%] z-10 flex justify-between px-2">
         {!atStart ? (
           <Button
             aria-label="Previous vehicles"
-            className="shrink-0"
+            className="pointer-events-auto size-9 min-h-9 rounded-full border-white bg-white/95 p-0 shadow-md"
             onClick={() => scrollPage(-1)}
             size="icon"
             variant="outline"
           >
             <ArrowLeft aria-hidden="true" size={18} />
           </Button>
+        ) : <span />}
+        {!atEnd ? (
+          <Button
+            aria-label="Show more vehicles"
+            className="pointer-events-auto size-9 min-h-9 rounded-full border-white bg-white/95 p-0 shadow-md"
+            onClick={() => scrollPage(1)}
+            size="icon"
+            variant="outline"
+          >
+            <ArrowRight aria-hidden="true" size={18} />
+          </Button>
         ) : null}
-        <Button
-          aria-label="Show more vehicles"
-          className="shrink-0"
-          disabled={atEnd}
-          onClick={() => scrollPage(1)}
-          size="icon"
-          variant="outline"
-        >
-          <ArrowRight aria-hidden="true" size={18} />
-        </Button>
       </div>
       <div
         aria-label="Vehicle preview"
@@ -71,7 +72,7 @@ function VehiclePreviewRail({ vehicles: previewVehicles }) {
             className="w-full shrink-0 snap-start sm:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)]"
             key={vehicle.id}
           >
-            <VehicleCard vehicle={vehicle} />
+            <VehicleCard preview vehicle={vehicle} />
           </div>
         ))}
       </div>
@@ -87,9 +88,13 @@ export function VehiclesSection({
   const activeVehicles = vehicles.filter((vehicle) => vehicle.active);
 
   return (
-    <Section aria-labelledby="vehicles-title" className="bg-white" id={preview ? undefined : "vehicles"}>
-      <Container>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <Section
+      aria-labelledby="vehicles-title"
+      className={preview ? "bg-[#f1f9fa] py-6 sm:py-7 lg:py-8" : "bg-white"}
+      id={preview ? undefined : "vehicles"}
+    >
+      <Container className={preview ? "grid min-w-0 gap-5 lg:grid-cols-[0.78fr_2.22fr] lg:items-center" : ""}>
+        <div className={preview ? "min-w-0" : "flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"}>
           <SectionIntro
             description={
               description ??
@@ -97,7 +102,7 @@ export function VehiclesSection({
                 ? "Select from our range of comfortable, air-conditioned vehicles for individual, family, and group travel."
                 : "Explore our white, air-conditioned vehicles and choose the seating that suits your group.")
             }
-            eyebrow="Travel options"
+            eyebrow={preview ? "Vehicles & Tariff" : "Travel options"}
             titleId="vehicles-title"
             title={
               title ??
@@ -106,16 +111,17 @@ export function VehiclesSection({
                 : "Find the right ride for your plans.")
             }
             titleLevel={preview || title ? "h2" : "h1"}
+            compact={preview}
           />
           {preview ? (
-            <Button asChild className="mb-8 w-fit sm:mb-10" variant="outline">
+            <Button asChild className="h-9 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white hover:brightness-105">
               <Link to="/vehicles-tariff">View All Vehicles &amp; Tariff</Link>
             </Button>
-          ) : (
+          ) : !preview ? (
             <WhatsAppButton className="mb-8 w-fit sm:mb-10" variant="outline">
               Ask about vehicles
             </WhatsAppButton>
-          )}
+          ) : null}
         </div>
         {preview ? (
           <VehiclePreviewRail vehicles={activeVehicles} />
@@ -126,9 +132,9 @@ export function VehiclesSection({
             ))}
           </div>
         )}
-        <p className="mt-5 text-xs leading-5 text-slate-500">
+        {!preview ? <p className="mt-5 text-xs leading-5 text-slate-500">
           Vehicle tariffs shown are current and indicative, not a guaranteed final fare. Please confirm details with RideWe when enquiring.
-        </p>
+        </p> : null}
       </Container>
     </Section>
   );

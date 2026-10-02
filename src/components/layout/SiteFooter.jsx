@@ -17,7 +17,7 @@ export function SiteFooter() {
         dark
         showLabels={false}
       />
-      <Container className="relative grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:py-14">
+      <Container className="relative grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_1.1fr_auto] lg:gap-8 lg:py-12">
         <div>
           <Link
             className="inline-flex w-fit items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
@@ -156,6 +156,14 @@ export function SiteFooter() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex items-start lg:justify-end">
+          <Link
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-4 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#35d45b] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            to="/contact"
+          >
+            Plan My Trip
+          </Link>
         </div>
       </Container>
 
