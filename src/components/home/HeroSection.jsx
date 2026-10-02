@@ -51,9 +51,9 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
-            RideWe helps you plan tours, transport and journeys across South India,
-            from straightforward airport transfers to thoughtfully designed family
-            and sightseeing trips.
+            Travel with RideWe Tours &amp; Travels for comfortable journeys,
+            sightseeing, vehicle rental, outstation travel, airport transfers, and
+            customized trips across South India.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button
@@ -63,7 +63,7 @@ export function HeroSection() {
               size="lg"
             >
               <a href="#trip-planner">
-                Plan Your Trip
+                Plan My Trip
                 <ArrowRight
                   aria-hidden="true"
                   className="transition-transform group-hover:translate-x-0.5"
@@ -75,7 +75,7 @@ export function HeroSection() {
               size="lg"
               variant="whatsapp"
             >
-              WhatsApp Us
+              Enquire on WhatsApp
             </WhatsAppButton>
           </div>
           <div className="mt-8 flex items-center gap-2 text-sm text-white/70">

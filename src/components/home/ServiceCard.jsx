@@ -1,12 +1,17 @@
 import {
   Camera,
   CarFront,
+  MapPinned,
   Map,
   Plane,
   Route,
   Signpost,
+  Users,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import { Link } from "react-router-dom";
+import { vehicles } from "../../data/vehicles.js";
+import { Button } from "../ui/button.jsx";
 
 const serviceIcons = {
   Map,
@@ -15,9 +20,11 @@ const serviceIcons = {
   Camera,
   Plane,
   Signpost,
+  Users,
+  MapPinned,
 };
 
-export function ServiceCard({ service }) {
+export function ServiceCard({ service, compact = false }) {
   const reduceMotion = useReducedMotion();
   const Icon = serviceIcons[service.icon];
 
@@ -35,8 +42,18 @@ export function ServiceCard({ service }) {
         {service.title}
       </h3>
       <p className="mt-2 text-sm leading-6 text-slate-600">
-        {service.description}
+        {compact ? service.previewDescription ?? service.description : service.description}
       </p>
+      {service.vehicleList ? (
+        <p className="mt-3 text-xs font-semibold leading-5 text-slate-600">
+          {vehicles.map((vehicle) => vehicle.displayName).join(" · ")}
+        </p>
+      ) : null}
+      {!compact && service.action ? (
+        <Button asChild className="mt-5" size="sm" variant="outline">
+          <Link to={service.to}>{service.action}</Link>
+        </Button>
+      ) : null}
     </motion.article>
   );
 }

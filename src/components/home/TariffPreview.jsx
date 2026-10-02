@@ -1,6 +1,8 @@
 import { ArrowRight, BadgeIndianRupee } from "lucide-react";
+import { Link } from "react-router-dom";
 import { tariffs } from "../../data/tariffs.js";
 import { formatRupees } from "../../utils/currency.js";
+import { Button } from "../ui/button.jsx";
 import { Container } from "../layout/Container.jsx";
 import { Section } from "../layout/Section.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
@@ -22,7 +24,7 @@ const serviceLabels = {
   "airport-transfer": "Airport transfer",
 };
 
-export function TariffPreview() {
+export function TariffPreview({ detailed = false }) {
   const activeTariffs = tariffs.filter((tariff) => tariff.active);
 
   return (
@@ -31,15 +33,22 @@ export function TariffPreview() {
         <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <SectionIntro
-              description="Tariffs vary by vehicle and journey details. Contact RideWe for current pricing."
-              eyebrow="Clear from the start"
+              description={
+                detailed
+                  ? "Review the tariff information and confirm route-specific details with RideWe."
+                  : "Tariffs vary by vehicle and journey details. Contact RideWe for current pricing."
+              }
+              eyebrow={detailed ? "Vehicles & Tariff" : "Clear from the start"}
               titleId="tariff-title"
-              title="Tariff information"
+              title={detailed ? "Tariff" : "Tariff information"}
+              titleLevel="h2"
             />
-            <WhatsAppButton variant="outline">
-              Ask for current tariffs
-              <ArrowRight aria-hidden="true" size={16} />
-            </WhatsAppButton>
+            {!detailed ? (
+              <WhatsAppButton variant="outline">
+                Ask for current tariffs
+                <ArrowRight aria-hidden="true" size={16} />
+              </WhatsAppButton>
+            ) : null}
           </div>
 
           {activeTariffs.length ? (
@@ -94,18 +103,46 @@ export function TariffPreview() {
                 Share your route, dates and vehicle preference. RideWe can discuss
                 the applicable tariff with you directly.
               </p>
-              <WhatsAppButton
-                className="mt-5 bg-gradient-to-r from-[#007a83] to-[#176b36] text-white hover:brightness-95 hover:text-white"
-                iconClassName="brightness-0 invert"
-                message="Hi RideWe, please share current tariff information for my trip."
-                size="sm"
-                style={{ color: "#fff" }}
-                style={{ color: "#fff" }}
-              >
-                Enquire on WhatsApp
-              </WhatsAppButton>
+              {!detailed ? (
+                <WhatsAppButton
+                  className="mt-5 bg-gradient-to-r from-[#007a83] to-[#176b36] text-white hover:brightness-95 hover:text-white"
+                  iconClassName="brightness-0 invert"
+                  message="Hi RideWe, please share current tariff information for my trip."
+                  size="sm"
+                  style={{ color: "#fff" }}
+                >
+                  Enquire on WhatsApp
+                </WhatsAppButton>
+              ) : null}
             </div>
           )}
+          {detailed ? (
+            <div className="mt-0 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-2">
+              <h3 className="text-xl font-bold text-brand">Tariff Notes</h3>
+              <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+                <p>
+                  Tariffs shown are indicative and may vary depending on the route
+                  and applicable travel conditions.
+                </p>
+                <p>
+                  Additional charges may apply where applicable, including tolls,
+                  parking, permits, taxes, hills charges, and other route-related
+                  charges.
+                </p>
+                <p>
+                  KM calculation is based on the applicable journey calculation used
+                  by RideWe.
+                </p>
+                <p>Final fare should be confirmed with RideWe before travel.</p>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link to="/contact">Plan My Trip</Link>
+                </Button>
+                <WhatsAppButton variant="outline">Enquire on WhatsApp</WhatsAppButton>
+              </div>
+            </div>
+          ) : null}
         </div>
       </Container>
     </Section>

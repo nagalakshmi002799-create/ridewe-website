@@ -34,6 +34,11 @@ export function SiteFooter() {
           <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">
             Ride Together for Better Experiences.
           </p>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">
+            Travel services for tours, sightseeing, vehicle rental, outstation
+            journeys, airport transfers, family and group travel, and customized
+            trips across South India.
+          </p>
           <p className="mt-2 text-sm text-white/70">
             Madurai, Tamil Nadu, India
           </p>
@@ -156,7 +161,7 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <Container className="flex flex-col gap-2 py-4 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>Ride Together for Better Experiences.</p>
+          <p>© RideWe Tours &amp; Travels. All rights reserved.</p>
           <button
             aria-label="Back to top"
             className="inline-flex w-fit items-center gap-1 rounded-sm hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"

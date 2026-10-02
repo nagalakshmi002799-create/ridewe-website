@@ -1,5 +1,7 @@
 import { ArrowRight, Compass, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { destinations } from "../../data/destinations.js";
+import { Button } from "../ui/button.jsx";
 import { Container } from "../layout/Container.jsx";
 import { Section } from "../layout/Section.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
@@ -41,55 +43,99 @@ function DestinationCard({ destination }) {
   );
 }
 
-export function DestinationsSection() {
+export function DestinationsSection({ detailed = false }) {
   const activeDestinations = destinations.filter(
     (destination) => destination.active,
   );
 
   return (
-    <Section
-      aria-labelledby="destinations-title"
-      className="bg-surface"
-      id="destinations"
-    >
-      <Container>
-        <SectionIntro
-          description="Tell us where you would like to go. Destination details will appear here as RideWe confirms them."
-          eyebrow="Discover places"
-          titleId="destinations-title"
-          title="Where would you like to travel?"
-        />
-        {activeDestinations.length ? (
+    <>
+      <Section
+        aria-labelledby="destinations-title"
+        className="bg-surface"
+        id="destinations"
+      >
+        <Container>
+          {detailed ? (
+            <h1 className="mb-2 text-4xl font-bold tracking-tight text-brand sm:text-5xl">
+              Tour Destinations
+            </h1>
+          ) : null}
+          <SectionIntro
+            description={
+              detailed
+                ? "Plan your journey across Tamil Nadu and South India with travel options based on your destination, travel dates, group size, and preferred vehicle."
+                : "Discover destinations across Tamil Nadu and South India with travel options that can be planned around your route, dates, group size, and vehicle preference."
+            }
+            eyebrow={detailed ? "Tour Destinations" : "Discover places"}
+            titleId="destinations-title"
+            title="Explore South India with RideWe"
+            titleLevel="h2"
+          />
+          <h2 className="mb-5 text-xl font-bold text-brand">
+            Popular Destinations
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {activeDestinations.map((destination) => (
-              <DestinationCard
-                destination={destination}
-                key={destination.id}
-              />
+              <DestinationCard destination={destination} key={destination.id} />
             ))}
           </div>
-        ) : (
-          <div className="flex flex-col gap-5 rounded-[1.75rem] border border-dashed border-slate-300 bg-gradient-to-br from-white to-[#f3f9f7] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#e8f7f6] text-[#007a83]">
-                <Compass aria-hidden="true" size={22} />
-              </span>
-              <div>
-                <h3 className="font-semibold text-brand">
-                  South India, your way.
-                </h3>
-                <p className="mt-1 max-w-xl text-sm leading-6 text-slate-600">
-                  Tell us where you want to go and RideWe can help shape the route around your plans.
-                </p>
+        </Container>
+      </Section>
+
+      {detailed ? (
+        <>
+          <Section className="bg-white">
+            <Container>
+              <div className="grid gap-6 rounded-[1.75rem] border border-slate-200 bg-surface p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-brand">
+                    Customized Destination Travel
+                  </h2>
+                  <p className="mt-3 text-base leading-7 text-slate-600">
+                    Have a different destination in mind? Share your route, travel
+                    date, travellers, and vehicle preference to discuss a suitable
+                    travel arrangement with RideWe.
+                  </p>
+                  <p className="mt-3 font-semibold text-brand">
+                    From → To → Travel Date → Travellers → Vehicle Preference
+                  </p>
+                </div>
+                <Button asChild className="w-fit">
+                  <Link to="/contact">
+                    Plan My Trip <ArrowRight aria-hidden="true" size={16} />
+                  </Link>
+                </Button>
               </div>
-            </div>
+            </Container>
+          </Section>
+          <Section className="bg-surface">
+            <Container className="max-w-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-brand">
+                Tour Packages
+              </h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                We can build detailed RideWe tour packages around confirmed
+                destinations, routes, travel duration, vehicle options, and customer
+                requirements.
+              </p>
+            </Container>
+          </Section>
+        </>
+      ) : (
+        <Section className="bg-white">
+          <Container className="flex flex-wrap items-center justify-between gap-5">
+            <p className="max-w-3xl text-base leading-7 text-slate-600">
+              Tell us where you would like to go and discuss a suitable travel plan
+              with RideWe.
+            </p>
             <WhatsAppButton className="shrink-0" variant="outline">
-              Plan a journey
+              Explore Destinations
               <ArrowRight aria-hidden="true" size={16} />
             </WhatsAppButton>
-          </div>
-        )}
-      </Container>
-    </Section>
+          </Container>
+        </Section>
+      )}
+    </>
   );
 }

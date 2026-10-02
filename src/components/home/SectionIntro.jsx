@@ -5,7 +5,10 @@ export function SectionIntro({
   align = "left",
   light = false,
   titleId,
+  titleLevel = "h2",
 }) {
+  const Title = titleLevel;
+
   return (
     <div
       className={`mb-8 max-w-2xl sm:mb-10 ${
@@ -21,14 +24,14 @@ export function SectionIntro({
           {eyebrow}
         </p>
       ) : null}
-      <h2
+      <Title
         className={`text-3xl font-bold leading-tight tracking-[-0.035em] sm:text-4xl ${
           light ? "text-white" : "text-brand"
         }`}
         id={titleId}
       >
         {title}
-      </h2>
+      </Title>
       {description ? (
         <p
           className={`mt-4 text-base leading-7 sm:text-lg ${

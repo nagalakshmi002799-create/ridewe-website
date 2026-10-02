@@ -79,7 +79,11 @@ function VehiclePreviewRail({ vehicles: previewVehicles }) {
   );
 }
 
-export function VehiclesSection({ preview = false }) {
+export function VehiclesSection({
+  preview = false,
+  title,
+  description,
+}) {
   const activeVehicles = vehicles.filter((vehicle) => vehicle.active);
 
   return (
@@ -87,10 +91,21 @@ export function VehiclesSection({ preview = false }) {
       <Container>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <SectionIntro
-            description="Explore our white, air-conditioned vehicles and choose the seating that suits your group."
+            description={
+              description ??
+              (preview
+                ? "Select from our range of comfortable, air-conditioned vehicles for individual, family, and group travel."
+                : "Explore our white, air-conditioned vehicles and choose the seating that suits your group.")
+            }
             eyebrow="Travel options"
             titleId="vehicles-title"
-            title={preview ? "A few vehicle options to start with." : "Find the right ride for your plans."}
+            title={
+              title ??
+              (preview
+                ? "Choose the Right Vehicle for Your Journey"
+                : "Find the right ride for your plans.")
+            }
+            titleLevel={preview || title ? "h2" : "h1"}
           />
           {preview ? (
             <Button asChild className="mb-8 w-fit sm:mb-10" variant="outline">

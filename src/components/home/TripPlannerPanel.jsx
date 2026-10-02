@@ -7,9 +7,10 @@ import {
   buildTripPlannerMessage,
   buildTripPlannerWhatsAppUrl,
 } from "../../utils/trip-planner-whatsapp.js";
+import { cn } from "../../lib/cn.js";
 import { Button } from "../ui/button.jsx";
 
-export function TripPlannerPanel() {
+export function TripPlannerPanel({ className }) {
   const {
     formState: { errors },
     handleSubmit,
@@ -34,7 +35,10 @@ export function TripPlannerPanel() {
 
   return (
     <div
-      className="relative z-10 mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_50px_-28px_rgba(11,13,15,0.3)] sm:mt-5 sm:p-5 lg:-ml-16 lg:mr-5"
+      className={cn(
+        "relative z-10 mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_50px_-28px_rgba(11,13,15,0.3)] sm:mt-5 sm:p-5 lg:-ml-16 lg:mr-5",
+        className,
+      )}
       id="trip-planner"
     >
       <div className="mb-4 flex items-start justify-between gap-3">
