@@ -16,65 +16,16 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden bg-[#e9f4f5] text-[#0b4775]"
+      className="relative isolate overflow-hidden bg-[#e9f4f5] bg-cover bg-no-repeat bg-[position:65%_56%] text-[#0b4775] sm:bg-[position:50%_56%] lg:bg-[position:54%_56%]"
       id="home"
+      style={{
+        backgroundImage: `url("${homeImages}/hero/ride-together-background.png")`,
+      }}
     >
-      <motion.img
-        alt=""
-        animate={reduceMotion ? undefined : { scale: 1.035, x: [0, -5, 0] }}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 size-full object-cover object-[center_56%]"
-        src={`${homeImages}/munnar-mountains.webp`}
-        transition={{ duration: 24, ease: "easeInOut", repeat: Infinity }}
-      />
-      <img
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 h-full w-[65%] object-cover object-[center_62%] sm:w-[56%]"
-        loading="eager"
-        src={`${import.meta.env.BASE_URL}images/destinations/kerala-coast.webp`}
-        style={{
-          maskImage: "linear-gradient(90deg, #000 0%, #000 54%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 54%, transparent 100%)",
-        }}
-      />
-      <img
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[38%] hidden h-full w-[28%] object-cover object-[center_18%] md:block"
-        loading="eager"
-        src={`${homeImages}/madurai-meenakshi.webp`}
-        style={{
-          maskImage: "linear-gradient(90deg, transparent 0%, #000 18%, #000 76%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 18%, #000 76%, transparent 100%)",
-        }}
-      />
-      <img
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 h-full w-[64%] object-cover object-[center_60%] sm:w-[55%]"
-        loading="eager"
-        src={`${homeImages}/munnar-road.webp`}
-        style={{
-          maskImage: "linear-gradient(270deg, #000 0%, #000 48%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(270deg, #000 0%, #000 48%, transparent 100%)",
-        }}
-      />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/70 via-white/45 to-white/10"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/40 via-white/15 to-white/2"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-[2%] z-0 hidden w-[clamp(145px,17vw,220px)] sm:block"
-      >
-        <img alt="" className="block w-full object-contain" src={ciazImage} />
-        <img
-          alt=""
-          className="absolute bottom-[34%] left-[31%] w-[19%] object-contain"
-          src={rideweLogo}
-        />
-      </div>
       <Container className="relative z-10 grid items-center gap-7 py-9 sm:py-12 lg:min-h-[410px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-6">
         <motion.div
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
