@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { homepageNavigation } from "../../data/homepage.js";
 import { primaryContact } from "../../utils/contact.js";
-import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { Button } from "../ui/button.jsx";
 import { Container } from "./Container.jsx";
 import { PhoneButton } from "./PhoneButton.jsx";
@@ -12,14 +11,6 @@ import { WhatsAppButton } from "./WhatsAppButton.jsx";
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
-
-  function navigateToSection(event, sectionId) {
-    setMenuOpen(false);
-    if (window.innerWidth < 1024) {
-      menuButtonRef.current?.focus();
-    }
-    scrollToSection(event, sectionId);
-  }
 
   function handleMenuKeyDown(event) {
     if (event.key === "Escape") {
@@ -62,14 +53,21 @@ export function SiteHeader() {
           onKeyDown={handleMenuKeyDown}
         >
           {homepageNavigation.map((item) => (
-            <a
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-brand-soft hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:py-2"
-              href={`#${item.id}`}
+            <NavLink
+              className={({ isActive }) =>
+                `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:py-2 ${
+                  isActive
+                    ? "bg-brand-soft text-brand"
+                    : "text-slate-700 hover:bg-brand-soft hover:text-brand"
+                }`
+              }
+              end={item.to === "/"}
               key={item.id}
-              onClick={(event) => navigateToSection(event, item.id)}
+              onClick={() => setMenuOpen(false)}
+              to={item.to}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 

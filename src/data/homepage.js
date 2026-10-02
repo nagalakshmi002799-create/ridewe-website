@@ -1,10 +1,10 @@
 export const homepageNavigation = [
-  { id: "home", label: "Home" },
-  { id: "tours", label: "Tours" },
-  { id: "vehicles", label: "Vehicles" },
-  { id: "destinations", label: "Destinations" },
-  { id: "tariff", label: "Tariff" },
-  { id: "contact", label: "Contact" },
+  { id: "home", label: "Home", to: "/" },
+  { id: "about", label: "About Us", to: "/about" },
+  { id: "services", label: "Our Services", to: "/services" },
+  { id: "vehicles-tariff", label: "Vehicles & Tariff", to: "/vehicles-tariff" },
+  { id: "tour-destinations", label: "Tour Destinations", to: "/tour-destinations" },
+  { id: "contact", label: "Contact Us", to: "/contact" },
 ];
 
 export const homepageServices = [
