@@ -11,12 +11,12 @@ import { JourneyRoute } from "../home/JourneyRoute.jsx";
 export function SiteFooter() {
   return (
     <footer className="relative isolate mt-auto overflow-hidden bg-brand-dark text-white">
-      <JourneyRoute
+      {/* <JourneyRoute
         animated={false}
         className="pointer-events-none absolute bottom-3 right-0 hidden w-[48%] max-w-2xl opacity-15 lg:block"
         dark
         showLabels={false}
-      />
+      /> */}
       <Container className="relative grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_1.1fr_auto] lg:gap-8 lg:py-12">
         <div>
           <Link

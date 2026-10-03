@@ -16,7 +16,7 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden bg-[#e9f4f5] bg-cover bg-no-repeat bg-[position:65%_56%] text-[#0b4775] sm:bg-[position:50%_56%] lg:bg-[position:54%_56%]"
+      className="relative isolate min-h-[calc(100svh-73px-10.49vw)] overflow-hidden bg-[#e9f4f5] bg-cover bg-no-repeat bg-[position:65%_56%] text-[#0b4775] sm:min-h-[calc(100svh-81px-10.49vw)] sm:bg-[position:50%_56%] lg:bg-[position:54%_56%] xl:min-h-[calc(100svh-77px-10.49vw)]"
       id="home"
       style={{
         backgroundImage: `url("${homeImages}/hero/ride-together-background.png")`,
@@ -24,7 +24,7 @@ export function HeroSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/40 via-white/15 to-white/2"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/60 via-white/5 to-white/2"
       />
       <Container className="relative z-10 grid items-center gap-7 py-9 sm:py-12 lg:min-h-[410px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-6">
         <motion.div
