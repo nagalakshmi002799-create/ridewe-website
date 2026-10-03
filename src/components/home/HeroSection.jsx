@@ -42,7 +42,7 @@ export function HeroSection() {
               Better Experiences.
             </span>
           </h1>
-          <p className="mt-4 max-w-[490px] text-sm leading-6 text-[#174c72] sm:text-base sm:leading-6">
+          <p className="mt-4 max-w-[490px] text-sm font-medium leading-6 text-[#174c72] sm:text-base sm:leading-6">
             Travel with RideWe Tours &amp; Travels for comfortable journeys,
             sightseeing, vehicle rental, outstation travel, airport transfers, and
             customized trips across South India.
@@ -50,7 +50,7 @@ export function HeroSection() {
           <div className="mt-5 flex flex-wrap gap-3">
             <Button
               asChild
-              className="group h-10 rounded-full border-0 bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white shadow-md hover:brightness-105"
+              className="group h-10 rounded-full border-0 bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white shadow-[0_8px_18px_-12px_rgba(0,100,110,0.65)] transition-shadow hover:brightness-105 hover:shadow-[0_10px_20px_-10px_rgba(0,100,110,0.55)]"
               onClick={(event) => scrollToSection(event, "trip-planner")}
             >
               <a href="#trip-planner">
@@ -63,7 +63,7 @@ export function HeroSection() {
               </a>
             </Button>
             <WhatsAppButton
-              className="h-10 rounded-full border-[#00a9b5] bg-white/90 px-5 text-sm text-[#078a8e] hover:bg-white"
+              className="h-10 rounded-full border-[#00a9b5] bg-white/90 px-5 text-sm text-[#078a8e] shadow-[0_8px_18px_-12px_rgba(0,100,110,0.45)] transition-shadow hover:bg-white hover:shadow-[0_10px_20px_-10px_rgba(0,100,110,0.4)]"
               variant="outline"
             >
               Enquire on WhatsApp
@@ -71,7 +71,7 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        <TripPlannerPanel className="mt-0 w-full max-w-[500px] justify-self-center rounded-2xl border-white/80 bg-white/95 p-4 shadow-[0_18px_48px_-22px_rgba(0,52,94,0.35)] backdrop-blur-sm sm:p-5 lg:justify-self-end" />
+        <TripPlannerPanel className="mt-0 w-full max-w-[500px] justify-self-center rounded-2xl border-white/80 bg-white/95 p-4 shadow-[0_18px_48px_-22px_rgba(0,52,94,0.35)] transition-shadow hover:shadow-[0_22px_48px_-20px_rgba(0,52,94,0.38)] backdrop-blur-sm sm:p-5 lg:justify-self-end" />
       </Container>
     </section>
   );

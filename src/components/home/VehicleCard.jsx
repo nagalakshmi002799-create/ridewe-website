@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { CarFront, Snowflake, Users } from "lucide-react";
 import { cn } from "../../lib/cn.js";
+import { LoadingImage } from "../ui/LoadingImage.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
 
 function formatVehicleRupees(amount) {
@@ -8,8 +8,6 @@ function formatVehicleRupees(amount) {
 }
 
 export function VehicleCard({ vehicle, className, preview = false }) {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <article
       className={cn(
@@ -20,12 +18,22 @@ export function VehicleCard({ vehicle, className, preview = false }) {
       )}
     >
       <div className={`relative overflow-hidden ${preview ? "aspect-[2/1] bg-white" : "aspect-[1.7/1] bg-[#f0f7f5]"}`}>
-        {vehicle.image && !imageError ? (
-          <img
+        {vehicle.image ? (
+          <LoadingImage
             alt={vehicle.imageAlt}
-            className="size-full object-contain"
+            className="size-full"
+            fallback={(
+              <div className="flex flex-col items-center gap-2 text-center">
+                <span className="grid size-16 place-items-center rounded-full border border-white bg-white/90 text-accent-dark shadow-sm">
+                  <CarFront aria-hidden="true" size={34} strokeWidth={1.4} />
+                </span>
+                <span className="text-xs font-semibold text-slate-600">
+                  Vehicle image unavailable
+                </span>
+              </div>
+            )}
+            imageClassName="object-contain"
             loading="lazy"
-            onError={() => setImageError(true)}
             src={vehicle.image}
           />
         ) : (

@@ -13,10 +13,100 @@
       type="image/png"
       href="%BASE_URL%brand/ridewe-logo-square.png"
     />
+    <link
+      rel="preload"
+      as="image"
+      href="%BASE_URL%brand/ridewe-logo-horizontal.png"
+    />
+    <style>
+      .ridewe-loading-screen {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #e8fafb 0%, #f2fcf5 50%, #eafbef 100%);
+      }
+      .ridewe-loading-content {
+        display: grid;
+        justify-items: center;
+        width: min(100% - 40px, 320px);
+        text-align: center;
+      }
+      .ridewe-loading-logo {
+        display: block;
+        width: min(68vw, 240px);
+        height: auto;
+        object-fit: contain;
+      }
+      .ridewe-loading-tagline {
+        margin: 14px 0 22px;
+        color: #174c58;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+      .ridewe-loading-track {
+        width: 100%;
+        height: 4px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgb(0 169 181 / 12%);
+      }
+      .ridewe-loading-progress {
+        display: block;
+        width: 42%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #00a9b5, #35d45b);
+        animation: ridewe-loading-progress 1.8s ease-in-out infinite;
+        transform-origin: left;
+      }
+      @keyframes ridewe-loading-progress {
+        0% { transform: translateX(-110%) scaleX(0.72); }
+        55% { transform: translateX(120%) scaleX(1.18); }
+        100% { transform: translateX(280%) scaleX(0.72); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ridewe-loading-progress {
+          width: 55%;
+          animation: none;
+          transform: none;
+        }
+      }
+    </style>
     <title>RideWe Tours &amp; Travels</title>
   </head>
   <body>
+    <div
+      aria-busy="true"
+      aria-label="Loading RideWe"
+      class="ridewe-loading-screen"
+      id="initial-loading-screen"
+      role="status"
+    >
+      <div class="ridewe-loading-content">
+        <img
+          alt="RideWe Tours &amp; Travels"
+          class="ridewe-loading-logo"
+          height="136"
+          src="%BASE_URL%brand/ridewe-logo-horizontal.png"
+          width="384"
+        />
+        <p class="ridewe-loading-tagline">
+          Ride Together for Better Experiences.
+        </p>
+        <div aria-hidden="true" class="ridewe-loading-track">
+          <span class="ridewe-loading-progress"></span>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
+    <script>
+      window.setTimeout(() => {
+        document.getElementById("initial-loading-screen")?.remove();
+      }, 5000);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

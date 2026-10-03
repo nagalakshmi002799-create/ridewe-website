@@ -6,21 +6,14 @@ import { scrollToTop } from "../../utils/scroll-to-top.js";
 import { Container } from "./Container.jsx";
 import { PhoneButton } from "./PhoneButton.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
-import { JourneyRoute } from "../home/JourneyRoute.jsx";
 
 export function SiteFooter() {
   return (
     <footer className="relative isolate mt-auto overflow-hidden bg-brand-dark text-white">
-      {/* <JourneyRoute
-        animated={false}
-        className="pointer-events-none absolute bottom-3 right-0 hidden w-[48%] max-w-2xl opacity-15 lg:block"
-        dark
-        showLabels={false}
-      /> */}
       <Container className="relative grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_1.1fr_auto] lg:gap-8 lg:py-12">
         <div>
           <Link
-            className="inline-flex w-fit items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            className="inline-flex w-fit items-center rounded-lg bg-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             to="/"
           >
             <img

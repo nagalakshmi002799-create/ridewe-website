@@ -5,16 +5,18 @@ import { Button } from "../ui/button.jsx";
 import { Container } from "../layout/Container.jsx";
 import { Section } from "../layout/Section.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
+import { LoadingImage } from "../ui/LoadingImage.jsx";
 import { SectionIntro } from "./SectionIntro.jsx";
 
 function DestinationCard({ destination }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
       {destination.image ? (
-        <img
+        <LoadingImage
           alt={destination.name}
-          className="aspect-[1.6/1] w-full object-cover"
+          className="aspect-[1.6/1] w-full"
           height="400"
+          imageClassName="object-cover"
           loading="lazy"
           src={destination.image}
           width="640"

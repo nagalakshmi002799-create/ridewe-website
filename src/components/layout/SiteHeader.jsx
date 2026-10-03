@@ -30,14 +30,14 @@ export function SiteHeader() {
         >
           <img
             alt=""
-            className="hidden h-14 w-[172px] object-contain sm:block"
+            className="hidden h-14 w-[172px] scale-[1.2] object-contain sm:block"
             height="136"
             src={`${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`}
             width="384"
           />
           <img
             alt=""
-            className="h-10 w-[122px] object-contain sm:hidden"
+            className="h-10 w-[122px] scale-[1.24] object-contain sm:hidden"
             height="136"
             src={`${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`}
             width="384"
@@ -55,7 +55,7 @@ export function SiteHeader() {
           {homepageNavigation.map((item) => (
             <NavLink
               className={({ isActive }) =>
-                `group relative whitespace-nowrap rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-2 xl:py-2 xl:text-xs ${
+                `group relative whitespace-nowrap rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-2 xl:py-2 xl:text-[13px] ${
                   isActive
                     ? "text-brand"
                     : "text-slate-700 hover:text-brand"

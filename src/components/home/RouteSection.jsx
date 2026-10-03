@@ -12,7 +12,7 @@ export function RouteSection() {
       id="route"
       style={{ backgroundImage: `url("${routeImages}/route-background.png")` }}
     >
-      <div className="relative mx-auto min-h-[540px] max-w-[1600px] px-5 py-8 sm:px-8 sm:py-10 md:min-h-[360px] md:py-0 lg:min-h-[400px] lg:px-12">
+      <div className="relative mx-auto min-h-[440px] max-w-[1600px] px-5 py-8 sm:px-8 sm:py-10 md:min-h-[360px] md:py-0 lg:min-h-[400px] lg:px-12">
         <div className="relative z-20 max-w-[520px] md:absolute md:left-8 md:top-1/2 md:w-[41%] md:-translate-y-1/2 lg:left-12">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#007f91] sm:text-sm">
             Journeys start here
@@ -41,7 +41,10 @@ export function RouteSection() {
         <img
           alt="RideWe journey by road from Madurai through Kerala to Karnataka"
           className="relative z-10 mt-6 block h-auto w-full object-contain md:absolute md:right-8 md:top-[44%] md:mt-0 md:w-[56%] md:-translate-y-1/2 lg:right-12 lg:w-[60%] lg:max-w-[1100px]"
+          height="725"
+          loading="eager"
           src={`${routeImages}/route-static.png`}
+          width="2170"
         />
       </div>
     </section>

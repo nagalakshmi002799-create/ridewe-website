@@ -10,6 +10,7 @@ import { Container } from "../components/layout/Container.jsx";
 import { PhoneButton } from "../components/layout/PhoneButton.jsx";
 import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
 import { Button } from "../components/ui/button.jsx";
+import { LoadingImage } from "../components/ui/LoadingImage.jsx";
 import { primaryContact } from "../utils/contact.js";
 
 const imageUrl = (path) => `${import.meta.env.BASE_URL}images/${path}`;
@@ -28,9 +29,10 @@ function DestinationPreviewCard({ destination }) {
     <article className="overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)]">
       <div className="relative aspect-[1.7/1] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce]">
         {image ? (
-          <img
+          <LoadingImage
             alt={`Travel scenery in ${destination.name}`}
-            className="absolute inset-0 size-full object-cover"
+            className="absolute inset-0 size-full"
+            imageClassName="object-cover"
             loading="lazy"
             src={imageUrl(image)}
           />
@@ -60,21 +62,24 @@ export function HomePage() {
             className="grid h-[145px] grid-cols-[1.2fr_0.8fr] grid-rows-2 gap-1.5 overflow-hidden rounded-2xl bg-[#e8f7f4] sm:h-[180px] lg:h-[170px]"
             role="group"
           >
-            <img
+            <LoadingImage
               alt="Meenakshi Amman Temple in Madurai"
-              className="row-span-2 size-full min-h-0 object-cover object-[center_27%]"
+              className="row-span-2 size-full min-h-0"
+              imageClassName="object-cover object-[center_27%]"
               loading="lazy"
               src={imageUrl("home/madurai-meenakshi.webp")}
             />
-            <img
+            <LoadingImage
               alt="Thirumalai Nayakkar Mahal in Madurai"
-              className="size-full min-h-0 object-cover object-[center_38%]"
+              className="size-full min-h-0"
+              imageClassName="object-cover object-[center_38%]"
               loading="lazy"
               src={imageUrl("home/madurai-mahal.webp")}
             />
-            <img
+            <LoadingImage
               alt="St Mary's Cathedral in Madurai"
-              className="size-full min-h-0 object-cover object-[center_25%]"
+              className="size-full min-h-0"
+              imageClassName="object-cover object-[center_25%]"
               loading="lazy"
               src={imageUrl("home/madurai-cathedral.webp")}
             />
