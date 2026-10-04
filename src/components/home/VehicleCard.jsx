@@ -7,6 +7,11 @@ function formatVehicleRupees(amount) {
   return `₹${amount.toLocaleString("en-IN")}`;
 }
 
+function getPreviewSeating(vehicle) {
+  if (vehicle.id === "tempo-traveller") return "12+1 / 14+1 Seater";
+  return `${vehicle.seating.replace(/ seats?$/, "")} Seater`;
+}
+
 export function VehicleCard({ vehicle, className, preview = false }) {
   return (
     <article
@@ -72,10 +77,14 @@ export function VehicleCard({ vehicle, className, preview = false }) {
           <span>AC</span>
           <span aria-hidden="true">·</span>
           <Users aria-hidden="true" className="shrink-0 text-accent-dark" size={13} />
-          <span>{vehicle.seating}</span>
+          <span>{preview ? getPreviewSeating(vehicle) : vehicle.seating}</span>
         </div>
 
-        {!preview ? <div className="mt-3 flex-1 space-y-2">
+        {preview ? (
+          <p className="mt-1 text-[10px] font-semibold text-brand">
+            Day Rent: {formatVehicleRupees(vehicle.dayRent)}/day only
+          </p>
+        ) : <div className="mt-3 flex-1 space-y-2">
           <div className="rounded-lg bg-surface p-2">
             <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-500">
             {vehicle.belowThresholdLabel}
@@ -120,7 +129,7 @@ export function VehicleCard({ vehicle, className, preview = false }) {
             Hills charge {formatVehicleRupees(vehicle.hillsCharge)}
             {vehicle.hillsChargeExtra ? " extra" : ""}
           </p>
-        </div> : null}
+        </div>}
         {!preview ? <WhatsAppButton
           ariaLabel={`Plan a trip with ${vehicle.displayName} on WhatsApp`}
           className="mt-3 w-full text-white hover:text-white"

@@ -7,8 +7,6 @@ import { scrollToSection } from "../../utils/scroll-to-section.js";
 import { TripPlannerPanel } from "./TripPlannerPanel.jsx";
 
 const homeImages = `${import.meta.env.BASE_URL}images/home`;
-const ciazImage = `${import.meta.env.BASE_URL}images/vehicles/ciaz.png`;
-const rideweLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`;
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
@@ -43,9 +41,7 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="mt-4 max-w-[490px] text-sm font-medium leading-6 text-[#174c72] sm:text-base sm:leading-6">
-            Travel with RideWe Tours &amp; Travels for comfortable journeys,
-            sightseeing, vehicle rental, outstation travel, airport transfers, and
-            customized trips across South India.
+            Travel with RideWe Tours & Travels for comfortable rides, reliable cab services, airport transfers, sightseeing, outstation journeys, and thoughtfully customized trips.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button

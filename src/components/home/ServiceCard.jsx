@@ -1,8 +1,12 @@
 import {
   Camera,
+  Car,
   CarFront,
+  Landmark,
+  Luggage,
   MapPinned,
   Map,
+  MapPinSearch,
   Plane,
   Route,
   Signpost,
@@ -16,8 +20,12 @@ import { Button } from "../ui/button.jsx";
 const serviceIcons = {
   Map,
   Route,
+  Car,
   CarFront,
   Camera,
+  Luggage,
+  MapPinSearch,
+  Landmark,
   Plane,
   Signpost,
   Users,
@@ -32,7 +40,7 @@ export function ServiceCard({ service, compact = false }) {
     <motion.article
       className={`group relative overflow-hidden border border-slate-100 bg-white shadow-[0_10px_30px_-24px_rgba(11,13,15,0.35)] transition-all duration-200 hover:-translate-y-1 hover:border-[#00A9B5]/40 hover:shadow-[0_18px_40px_-28px_rgba(0,169,181,0.42)] ${
         compact
-          ? "flex min-h-[72px] flex-col items-center justify-center rounded-xl px-2 py-2 text-center"
+        ? "flex min-h-[96px] flex-col items-center justify-center rounded-xl px-2 py-2 text-center"
           : "rounded-[1.5rem] p-5 sm:p-6"
       }`}
       whileHover={reduceMotion ? undefined : { y: -3 }}

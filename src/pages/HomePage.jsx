@@ -1,6 +1,14 @@
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeDollarSign,
+  CarFront,
+  Clock3,
+  ShieldCheck,
+  UsersRound,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { destinations } from "../data/destinations.js";
+import { homepageServicePreview } from "../data/homepage.js";
 import { HeroSection } from "../components/home/HeroSection.jsx";
 import { RouteSection } from "../components/home/RouteSection.jsx";
 import { SectionIntro } from "../components/home/SectionIntro.jsx";
@@ -11,6 +19,12 @@ import { PhoneButton } from "../components/layout/PhoneButton.jsx";
 import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { LoadingImage } from "../components/ui/LoadingImage.jsx";
+import {
+  aboutHighlights,
+  aboutRideWeAlt,
+  aboutRideWeImagePath,
+  aboutRideWeSquareImagePath,
+} from "../data/about.js";
 import { primaryContact } from "../utils/contact.js";
 
 const imageUrl = (path) => `${import.meta.env.BASE_URL}images/${path}`;
@@ -26,8 +40,8 @@ function DestinationPreviewCard({ destination }) {
   const image = destinationImages[destination.id];
 
   return (
-    <article className="overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)]">
-      <div className="relative aspect-[1.7/1] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce]">
+    <article className="overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)] lg:flex lg:h-full lg:flex-col">
+      <div className="relative aspect-[1.7/1] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce] lg:aspect-auto lg:flex-1">
         {image ? (
           <LoadingImage
             alt={`Travel scenery in ${destination.name}`}
@@ -55,46 +69,76 @@ export function HomePage() {
       <HeroSection />
       <RouteSection />
 
-      <section aria-labelledby="about-preview-title" className="bg-white py-6 sm:py-7 lg:py-8" id="about-preview">
-        <Container className="grid items-center gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
-          <div
-            aria-label="Madurai heritage, including Meenakshi Amman Temple, Thirumalai Nayakkar Mahal and St Mary's Cathedral"
-            className="grid h-[145px] grid-cols-[1.2fr_0.8fr] grid-rows-2 gap-1.5 overflow-hidden rounded-2xl bg-[#e8f7f4] sm:h-[180px] lg:h-[170px]"
-            role="group"
-          >
-            <LoadingImage
-              alt="Meenakshi Amman Temple in Madurai"
-              className="row-span-2 size-full min-h-0"
-              imageClassName="object-cover object-[center_27%]"
-              loading="lazy"
-              src={imageUrl("home/madurai-meenakshi.webp")}
-            />
-            <LoadingImage
-              alt="Thirumalai Nayakkar Mahal in Madurai"
-              className="size-full min-h-0"
-              imageClassName="object-cover object-[center_38%]"
-              loading="lazy"
-              src={imageUrl("home/madurai-mahal.webp")}
-            />
-            <LoadingImage
-              alt="St Mary's Cathedral in Madurai"
-              className="size-full min-h-0"
-              imageClassName="object-cover object-[center_25%]"
-              loading="lazy"
-              src={imageUrl("home/madurai-cathedral.webp")}
-            />
+      <section aria-labelledby="about-preview-title" className="bg-white py-7 sm:py-8 lg:py-10" id="about-preview">
+        <Container className="grid items-center gap-6 md:grid-cols-2 lg:gap-10">
+          <div className="w-full">
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet={imageUrl(aboutRideWeSquareImagePath)}
+                width={1254}
+                height={1254}
+              />
+              <img
+                alt={aboutRideWeAlt}
+                className="block h-auto w-full"
+                loading="lazy"
+                src={imageUrl(aboutRideWeImagePath)}
+                width={1914}
+                height={822}
+              />
+            </picture>
           </div>
-          <div className="border-l-0 border-[#dce9e9] lg:border-l lg:pl-8">
-            <SectionIntro
-              compact
-              description="RideWe Tours & Travels helps individuals, families, and groups plan and travel comfortably with suitable vehicles, sightseeing support, and customized travel options. From local sightseeing to outstation journeys, we focus on making travel planning simple and helping you choose the right option for your trip."
-              eyebrow="About RideWe"
-              title="Travel Made Simple with RideWe"
-              titleId="about-preview-title"
-            />
-            <Button asChild className="h-9 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white hover:brightness-105">
+
+          <div className="lg:pl-1">
+            <h2
+              className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent-dark"
+              id="about-preview-title"
+            >
+              About RideWe
+            </h2>
+
+            <div className="mt-5 space-y-4 text-base leading-7 text-slate-700 sm:text-[1.03rem]">
+              <p className="text-2xl font-bold leading-tight tracking-[-0.035em] text-[#0b4775] sm:text-[1.75rem]">
+                RideWe Tours &amp; Travels – Ride Together for Better Experiences.
+              </p>
+              <p>
+                Every journey is better when you have the right ride. RideWe offers
+                comfortable and reliable travel solutions for individuals, families,
+                and groups, with suitable vehicles, sightseeing assistance, and
+                customized options to match your needs and budget. From exploring your
+                local destinations to travelling across cities and states, we make
+                planning simple and stress-free. Our vision is simple — to make
+                comfortable and affordable travel accessible to everyone, while turning
+                every journey into a better experience.
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2.5">
+              {aboutHighlights.map(({ icon, label }) => {
+                const Icon = {
+                  Clock3,
+                  UsersRound,
+                  ShieldCheck,
+                  BadgeDollarSign,
+                  CarFront,
+                }[icon];
+
+                return (
+                  <div
+                    className="inline-flex items-center gap-2 rounded-full border border-[#dfece9] bg-[#f5f8f7] px-3 py-2 text-sm font-medium text-[#0b0d0f]"
+                    key={label}
+                  >
+                    {Icon ? <Icon aria-hidden="true" className="size-4 text-[#00a9b5]" /> : null}
+                    <span>{label}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <Button asChild className="mt-7 h-11 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#35d45b] px-5 text-sm !text-white hover:brightness-105">
               <Link to="/about">
-                Read More About RideWe <ArrowRight aria-hidden="true" size={15} />
+                Read More About RideWe <span aria-hidden="true">→</span>
               </Link>
             </Button>
           </div>
@@ -103,15 +147,7 @@ export function HomePage() {
 
       <ServicesSection
         compact
-        serviceIds={[
-          "tour-packages",
-          "customized-tours",
-          "sightseeing-tours",
-          "vehicle-rental",
-          "outstation-travel",
-          "airport-transfers",
-          "family-group-travel",
-        ]}
+        services={homepageServicePreview}
       />
 
       <VehiclesSection preview />
@@ -130,13 +166,13 @@ export function HomePage() {
           aria-hidden="true"
           className="absolute inset-0 -z-10 bg-gradient-to-r from-[#edf9fb]/72 via-[#ebf8f4]/65 to-white/68"
         />
-        <Container className="grid gap-5 lg:grid-cols-[0.78fr_2.22fr] lg:items-center">
+        <Container className="grid gap-5 lg:grid-cols-[0.78fr_2.22fr] lg:items-stretch">
           <div>
             <SectionIntro
               compact
-              description="Discover breathtaking destinations across Tamil Nadu and South India."
+              description="Travel through the vibrant culture, timeless heritage, natural beauty, and scenic landscapes of Tamil Nadu and South India. Whether it’s a temple trail, a relaxing hill-station escape, a coastal getaway, or a family adventure, RideWe helps you discover more along the way."
               eyebrow="Tour destinations"
-              title="Explore South India with RideWe"
+              title="Beyond the Destination, Discover the Journey with RideWe"
               titleId="destinations-preview-title"
             />
             <Button asChild className="h-9 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white hover:brightness-105">
@@ -145,7 +181,7 @@ export function HomePage() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-3 lg:h-full">
             {previewDestinations.map((destination) => (
               <DestinationPreviewCard destination={destination} key={destination.id} />
             ))}

@@ -6,10 +6,16 @@ import { Section } from "../layout/Section.jsx";
 import { SectionIntro } from "./SectionIntro.jsx";
 import { ServiceCard } from "./ServiceCard.jsx";
 
-export function ServicesSection({ compact = false, serviceIds = null }) {
-  const selectedServices = serviceIds
-    ? homepageServices.filter((service) => serviceIds.includes(service.id))
-    : homepageServices;
+export function ServicesSection({
+  compact = false,
+  serviceIds = null,
+  services: serviceItems = null,
+}) {
+  const selectedServices =
+    serviceItems ??
+    (serviceIds
+      ? homepageServices.filter((service) => serviceIds.includes(service.id))
+      : homepageServices);
 
   const services = selectedServices;
 
@@ -23,18 +29,29 @@ export function ServicesSection({ compact = false, serviceIds = null }) {
         <SectionIntro
           description={
             compact
-              ? "RideWe provides practical travel solutions for local trips, sightseeing, outstation journeys, family and group travel, vehicle rental, airport transfers, and customized tour planning."
+              ? "From quick local rides to memorable outstation adventures, RideWe makes every journey simple, comfortable, and well planned. Whether you need a reliable cab, airport transfer, sightseeing trip, temple tour, family getaway, or a customized travel experience, we help you travel with confidence from start to finish."
               : "RideWe Tours & Travels provides travel and transportation services for local, outstation, family, group, and customized journeys."
           }
           eyebrow={compact ? "Travel with RideWe" : "Our Services"}
           titleId="services-title"
           title={
             compact
-              ? "Travel Services for Every Journey"
+              ? "Journeys Made Simple, Experiences Made Memorable"
               : "Our Services"
           }
           titleLevel={compact ? "h2" : "h1"}
           compact={compact}
+          titleAction={
+            compact ? (
+              <Button
+                asChild
+                className="h-9 min-h-9 shrink-0 rounded-full border-0 bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white hover:brightness-105"
+                size="sm"
+              >
+                <Link to="/services">View All Services</Link>
+              </Button>
+            ) : null
+          }
         />
         {!compact ? (
           <h2 className="mb-8 -mt-4 text-xl font-semibold text-slate-700 sm:text-2xl">
@@ -46,13 +63,6 @@ export function ServicesSection({ compact = false, serviceIds = null }) {
             <ServiceCard compact={compact} key={service.id} service={service} />
           ))}
         </div>
-        {compact ? (
-          <div className="mt-4 flex justify-center sm:mt-5">
-            <Button asChild className="h-9 rounded-full border-[#00a9b5] bg-white px-5 text-sm !text-[#007a83]" variant="outline">
-              <Link to="/services">View All Services</Link>
-            </Button>
-          </div>
-        ) : null}
       </Container>
     </Section>
   );

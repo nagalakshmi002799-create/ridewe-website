@@ -95,6 +95,37 @@ export const homepageServices = [
   },
 ];
 
+const servicesById = Object.fromEntries(
+  homepageServices.map((service) => [service.id, service]),
+);
+
+export const homepageServicePreview = [
+  { ...servicesById["taxi-cab-services"], title: "Reliable Cab", icon: "Car" },
+  {
+    ...servicesById["airport-transfers"],
+    title: "Airport Transfer",
+    icon: "Plane",
+  },
+  { ...servicesById["tour-packages"], icon: "Luggage" },
+  { ...servicesById["sightseeing-tours"] },
+  {
+    ...servicesById["customized-tours"],
+    title: "Customized Tour Package",
+    icon: "MapPinSearch",
+  },
+  {
+    ...servicesById["family-group-travel"],
+    title: "Group Tour",
+    icon: "Users",
+  },
+  {
+    ...servicesById["tour-packages"],
+    id: "temple-tour",
+    title: "Temple Tour",
+    icon: "Landmark",
+  },
+];
+
 export const routeStops = ["Madurai", "Kerala", "Karnataka"];
 
 export const rideweBenefits = [

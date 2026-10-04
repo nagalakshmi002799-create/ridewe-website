@@ -67,11 +67,11 @@ export function DestinationsSection({ detailed = false }) {
             description={
               detailed
                 ? "Plan your journey across Tamil Nadu and South India with travel options based on your destination, travel dates, group size, and preferred vehicle."
-                : "Discover destinations across Tamil Nadu and South India with travel options that can be planned around your route, dates, group size, and vehicle preference."
+                : "From ancient temples and heritage cities to peaceful hill stations, scenic coastlines, and unforgettable getaways, explore the diverse beauty of Tamil Nadu and South India with RideWe."
             }
             eyebrow={detailed ? "Tour Destinations" : "Discover places"}
             titleId="destinations-title"
-            title="Explore South India with RideWe"
+            title="Beyond the Destination, Discover the Journey with RideWe"
             titleLevel="h2"
           />
           <h2 className="mb-5 text-xl font-bold text-brand">
