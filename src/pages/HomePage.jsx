@@ -154,18 +154,9 @@ export function HomePage() {
 
       <section
         aria-labelledby="destinations-preview-title"
-        className="relative isolate overflow-hidden bg-[#f0f9fa] py-6 sm:py-7 lg:py-8"
+        className="ridewe-loading-background py-6 sm:py-7 lg:py-8"
         id="destinations-preview"
       >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-20 bg-cover bg-[center_56%] opacity-60"
-          style={{ backgroundImage: `url("${imageUrl("home/coorg-hills.webp")}")` }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#edf9fb]/72 via-[#ebf8f4]/65 to-white/68"
-        />
         <Container className="grid gap-5 lg:grid-cols-[0.78fr_2.22fr] lg:items-stretch">
           <div>
             <SectionIntro

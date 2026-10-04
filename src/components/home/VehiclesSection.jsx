@@ -13,7 +13,7 @@ export function VehiclesSection({
   description,
 }) {
   const activeVehicles = vehicles.filter((vehicle) => vehicle.active);
-  const previewVehicleIds = ["sedan", "innova", "tempo-traveller"];
+  const previewVehicleIds = ["sedan", "ertiga", "innova", "tempo-traveller"];
   const displayedVehicles = preview
     ? previewVehicleIds
         .map((id) => activeVehicles.find((vehicle) => vehicle.id === id))
@@ -23,7 +23,7 @@ export function VehiclesSection({
   return (
     <Section
       aria-labelledby="vehicles-title"
-      className={preview ? "bg-[#f1f9fa] py-6 sm:py-7 lg:py-8" : "bg-white"}
+      className={preview ? "ridewe-loading-background py-6 sm:py-7 lg:py-8" : "bg-white"}
       id={preview ? undefined : "vehicles"}
     >
       <Container className={preview ? "grid min-w-0 gap-5" : ""}>
@@ -63,9 +63,18 @@ export function VehiclesSection({
           ) : null}
         </div>
         {preview ? (
-          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
             {displayedVehicles.map((vehicle) => (
-              <VehicleCard key={vehicle.id} preview vehicle={vehicle} />
+              <div
+                className={
+                  ["ertiga", "tempo-traveller"].includes(vehicle.id)
+                    ? "hidden sm:block"
+                    : undefined
+                }
+                key={vehicle.id}
+              >
+                <VehicleCard preview vehicle={vehicle} />
+              </div>
             ))}
           </div>
         ) : (

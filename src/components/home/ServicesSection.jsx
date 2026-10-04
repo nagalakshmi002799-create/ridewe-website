@@ -22,7 +22,7 @@ export function ServicesSection({
   return (
     <Section
       aria-labelledby="services-title"
-      className={compact ? "bg-[#eff9fa] py-6 sm:py-7 lg:py-8" : "bg-surface"}
+      className={compact ? "ridewe-loading-background py-6 sm:py-7 lg:py-8" : "bg-surface"}
       id={compact ? undefined : "services"}
     >
       <Container>

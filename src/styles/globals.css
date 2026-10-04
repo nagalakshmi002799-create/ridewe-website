@@ -37,13 +37,17 @@ body {
   margin: 0;
 }
 
+.ridewe-loading-screen,
+.ridewe-loading-background {
+  background: linear-gradient(135deg, #e8fafb 0%, #f2fcf5 50%, #eafbef 100%);
+}
+
 .ridewe-loading-screen {
   position: fixed;
   z-index: 100;
   inset: 0;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #e8fafb 0%, #f2fcf5 50%, #eafbef 100%);
 }
 
 .ridewe-loading-content {
