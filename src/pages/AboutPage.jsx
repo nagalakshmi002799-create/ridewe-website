@@ -1,174 +1,268 @@
 import {
+  ArrowRight,
   BadgeDollarSign,
-  CalendarDays,
   CarFront,
   Clock3,
-  MapPin,
+  Headset,
+  Route,
   ShieldCheck,
   Users,
   UsersRound,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { vehicles } from "../data/vehicles.js";
 import {
-  aboutHighlights,
   aboutRideWeAlt,
   aboutRideWeImagePath,
-  aboutRideWeSquareImagePath,
 } from "../data/about.js";
-import { Button } from "../components/ui/button.jsx";
 import { Container } from "../components/layout/Container.jsx";
 import { Section } from "../components/layout/Section.jsx";
 import { JourneyCta } from "../components/home/JourneyCta.jsx";
 
-const travelSteps = [
-  { label: "Share your travel plan", icon: MapPin },
-  { label: "Discuss the requirement", icon: CalendarDays },
-  { label: "Choose the suitable vehicle", icon: CarFront },
-  { label: "Plan the journey", icon: Users },
-];
-
 const imageUrl = (path) => `${import.meta.env.BASE_URL}images/${path}`;
 
-export function AboutPage() {
-  const highlightIconMap = {
-    "10+ Years Experience": Clock3,
-    "5000+ Customers": UsersRound,
-    "Experienced & Friendly Drivers": Users,
-    "Trustworthy Service": ShieldCheck,
-    "Pricing That Matches Your Budget": BadgeDollarSign,
-    "Reliable Vehicles": CarFront,
-  };
+const travelHighlights = [
+  {
+    title: "10+ Years Experience",
+    icon: Clock3,
+  },
+  {
+    title: "5000+ Customers",
+    icon: UsersRound,
+  },
+  {
+    title: "Experienced & Friendly Drivers",
+    icon: Users,
+  },
+  {
+    title: "Trustworthy Service",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Pricing That Matches Your Budget",
+    icon: BadgeDollarSign,
+  },
+  {
+    title: "Reliable Vehicles",
+    icon: CarFront,
+  },
+  {
+    title: "24/7 Support",
+    icon: Headset,
+  },
+  {
+    title: "Flexible Travel Options",
+    icon: Route,
+  },
+];
+
+const travelSteps = [
+  "Share Your Plan",
+  "Let’s Understand Your Needs",
+  "Find the Right Ride",
+  "Plan & Start the Journey",
+];
+
+const groupVehicleOptions = [
+  "Ciaz",
+  "Ertiga",
+  "Innova",
+  "Innova Crysta",
+  "Tempo Traveller",
+];
+
+function Highlight({ icon: Icon, title }) {
+  return (
+    <li className="flex min-h-16 flex-col items-center justify-center gap-1 text-center">
+      <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-accent">
+        <Icon aria-hidden="true" size={15} />
+      </span>
+      <h3 className="text-xs font-bold leading-4 text-brand">{title}</h3>
+    </li>
+  );
+}
+
+function JourneyStep({ index, title }) {
+  const stepNumber = String(index + 1).padStart(2, "0");
+  const isLast = index === travelSteps.length - 1;
 
   return (
+    <li className="relative flex min-h-11 items-center gap-2.5">
+      <span className="grid size-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#e4f8f6] to-[#e9f9eb] text-xs font-bold text-accent-dark ring-1 ring-[#bfe9df]">
+        {stepNumber}
+      </span>
+      <h3 className="text-xs font-bold leading-4 text-brand">{title}</h3>
+      {!isLast ? (
+        <ArrowRight
+          aria-hidden="true"
+          className="ml-auto hidden size-3 shrink-0 text-accent/60 min-[480px]:block"
+          size={12}
+        />
+      ) : null}
+    </li>
+  );
+}
+
+export function AboutPage() {
+  return (
     <>
-      <Section className="bg-surface py-7 sm:py-8 lg:py-10">
-        <Container className="grid items-center gap-6 md:grid-cols-2 lg:gap-10">
-          <div className="w-full">
-            <picture>
-              <source
-                media="(min-width: 768px)"
-                srcSet={imageUrl(aboutRideWeSquareImagePath)}
-                width={1254}
-                height={1254}
-              />
-              <img
-                alt={aboutRideWeAlt}
-                className="block h-auto w-full"
-                loading="lazy"
-                src={imageUrl(aboutRideWeImagePath)}
-                width={1914}
-                height={822}
-              />
-            </picture>
-          </div>
+      <div className="overflow-hidden md:h-[clamp(18rem,28vw,26rem)]">
+        <img
+          alt={aboutRideWeAlt}
+          className="block h-auto w-full md:h-full md:object-cover md:object-[center_48%]"
+          fetchPriority="high"
+          src={imageUrl(aboutRideWeImagePath)}
+          width={1914}
+          height={822}
+        />
+      </div>
 
-          <div className="lg:pl-1">
-            <h1 className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent-dark">
-              About RideWe
-            </h1>
-
-            <div className="mt-5 space-y-4 text-base leading-7 text-slate-700 sm:text-[1.03rem]">
-              <p className="text-2xl font-bold leading-tight tracking-[-0.035em] text-[#0b4775] sm:text-[1.75rem]">
-                RideWe Tours &amp; Travels – Ride Together for Better Experiences.
-              </p>
-              <p>
-                Every journey is better when you have the right ride. RideWe offers
-                comfortable and reliable travel solutions for individuals, families,
-                and groups, with suitable vehicles, sightseeing assistance, and
-                customized options to match your needs and budget. From exploring your
-                local destinations to travelling across cities and states, we make
-                planning simple and stress-free. Our vision is simple — to make
-                comfortable and affordable travel accessible to everyone, while turning
-                every journey into a better experience.
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2.5">
-              {aboutHighlights.map(({ label }) => {
-                const Icon = highlightIconMap[label];
-
-                return (
-                  <div
-                    className="inline-flex items-center gap-2 rounded-full border border-[#dfece9] bg-[#f5f8f7] px-3 py-2 text-sm font-medium text-[#0b0d0f]"
-                    key={label}
-                  >
-                    {Icon ? <Icon aria-hidden="true" className="size-4 text-[#00a9b5]" /> : null}
-                    <span>{label}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <Button asChild className="mt-7 h-11 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#35d45b] px-5 text-sm !text-white hover:brightness-105">
-              <Link to="/about">
-                Read More About RideWe <span aria-hidden="true">→</span>
-              </Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="bg-white">
+      <Section
+        className="py-7 sm:py-8 lg:py-10"
+        style={{
+          background:
+            "linear-gradient(135deg, #E8FAFB 0%, #F2FCF5 50%, #EAFBEF 100%)",
+        }}
+      >
         <Container>
-          <h2 className="text-3xl font-bold tracking-tight text-brand sm:text-4xl">
-            Our Travel Approach
-          </h2>
-          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-            Every journey is different. A family holiday, a temple trip, a group tour,
-            airport transfer, and an outstation journey can have different requirements.
-            RideWe focuses on understanding those requirements and helping customers
-            choose a suitable travel option.
-          </p>
-          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {travelSteps.map(({ label, icon: Icon }, index) => (
-              <li
-                className="rounded-2xl border border-slate-200 bg-surface p-5"
-                key={label}
-              >
-                <span className="grid size-11 place-items-center rounded-xl bg-brand-soft text-accent-dark">
-                  <Icon aria-hidden="true" size={20} />
-                </span>
-                <p className="mt-4 text-xs font-bold uppercase tracking-wider text-accent-dark">
-                  Step {index + 1}
-                </p>
-                <h3 className="mt-1 font-semibold text-brand">{label}</h3>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </Section>
-
-      <Section className="bg-surface">
-        <Container className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-brand">
-              Families and Groups
-            </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              Whether you are travelling with family, friends, or a larger group,
-              RideWe provides different vehicle options based on the size and needs of
-              your travel group.
+          <h1 className="text-xs font-bold uppercase tracking-[0.18em] text-accent-dark">
+            About RideWe
+          </h1>
+          <div className="mt-4 space-y-4 text-base leading-7 text-slate-700 sm:text-[1.03rem]">
+            <p className="text-2xl font-bold leading-tight tracking-[-0.035em] text-[#0b4775] sm:text-[1.75rem]">
+              RideWe Tours &amp; Travels – Ride Together for Better Experiences.
             </p>
-            <ul className="mt-5 flex flex-wrap gap-2">
-              {vehicles.map((vehicle) => (
-                <li
-                  className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-semibold text-brand"
-                  key={vehicle.id}
-                >
-                  {vehicle.displayName}
-                </li>
+            <p>
+              Every journey is better when you have the right ride. RideWe provides
+              comfortable and reliable travel solutions for individuals, families,
+              and groups, with suitable vehicles, sightseeing assistance, and flexible
+              travel options tailored to your needs and budget.
+            </p>
+            <p>
+              From local trips and airport transfers to sightseeing, temple tours,
+              outstation journeys, and multi-day travel across cities and states, we
+              make planning simple and stress-free. We take the time to understand
+              your requirements and help you choose a travel option that works for
+              your destination, group size, schedule, and preferences.
+            </p>
+            <p>
+              Our vision is simple — to make comfortable and affordable travel
+              accessible to everyone while turning every journey into a better
+              experience.
+            </p>
+          </div>
+
+          <div className="mt-7">
+            <h2 className="text-xl font-bold tracking-tight text-brand">
+              Why Travel with RideWe?
+            </h2>
+            <ul className="mt-4 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-4">
+              {travelHighlights.map((highlight) => (
+                <Highlight {...highlight} key={highlight.title} />
               ))}
             </ul>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-brand">
-              Local &amp; Outstation Travel
-            </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              RideWe supports both local travel and longer journeys. Services can
-              include local sightseeing, outstation travel, airport transfers, vehicle
-              rental, and customized travel arrangements.
+        </Container>
+      </Section>
+
+      <section className="bg-white">
+        <Container>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+            <div className="self-start md:mt-20 lg:mt-24">
+              <h2 className="text-3xl font-bold tracking-tight text-brand sm:text-4xl">
+                Our Travel Approach
+              </h2>
+              <p className="mt-2 text-lg font-semibold text-[#0b4775]">
+                Your Plans. Your Preferences. Your Journey.
+              </p>
+              <div className="mt-4 space-y-4 text-base leading-7 text-slate-600">
+                <p>
+                  Every trip is different. A family holiday may need extra comfort, a
+                  temple tour may need flexible stops, a group trip may require more
+                  space, and an airport transfer may simply need to be smooth and on
+                  time.
+                </p>
+                <p>
+                  At RideWe, we start by understanding what you need and then help you
+                  choose a travel option that fits your journey.
+                </p>
+              </div>
+              <ol className="relative mt-5 grid grid-cols-1 gap-x-3 gap-y-1 sm:grid-cols-2">
+                {travelSteps.map((title, index) => (
+                  <JourneyStep index={index} key={title} title={title} />
+                ))}
+              </ol>
+            </div>
+            <div className="flex items-center justify-end">
+              <img
+                alt="Tamil Nadu travel scenery"
+                className="block h-auto w-full max-w-md object-contain"
+                loading="lazy"
+                src={imageUrl("home/destination/destination-tamilnadu.png")}
+                width={1523}
+                height={1032}
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <Section
+        style={{
+          background:
+            "linear-gradient(135deg, #E8FAFB 0%, #F2FCF5 50%, #EAFBEF 100%)",
+        }}
+      >
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-brand">
+                Families &amp; Groups
+              </h2>
+              <h3 className="mt-2 text-lg font-semibold text-[#0b4775]">
+                Travel Together, Travel Comfortably
+              </h3>
+              <p className="mt-4 text-base leading-7 text-slate-700">
+                Whether it’s a family outing, a weekend with friends, or a larger
+                group journey, RideWe helps you choose a vehicle that fits your group
+                size, comfort needs, and travel plans.
+              </p>
+              <h4 className="mt-4 font-bold text-brand">Our vehicle options include:</h4>
+              <ul className="mt-2 flex flex-wrap gap-2">
+                {groupVehicleOptions.map((option) => (
+                  <li
+                    className="rounded-md border border-[#b9e9df] bg-[#e8f7f6] px-3 py-1 text-sm font-medium text-brand"
+                    key={option}
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-brand">
+                Local &amp; Outstation Travel
+              </h2>
+              <h3 className="mt-2 text-lg font-semibold text-[#0b4775]">
+                From Nearby Trips to Long-Distance Journeys
+              </h3>
+              <p className="mt-4 text-base leading-7 text-slate-700">
+                Whether you're travelling within the city or heading to another
+                destination, RideWe offers flexible travel options designed around
+                your plans.
+              </p>
+              <p className="mt-4 text-base leading-7 text-slate-700">
+                Choose from local sightseeing, outstation trips, airport transfers,
+                vehicle rental, temple tours, and customized travel arrangements.
+                Share your destination and requirements with us, and we’ll help you
+                plan a comfortable and convenient journey.
+              </p>
+            </div>
+          </div>
+          <div className="mt-6">
+            <h4 className="font-bold text-brand">Need a different vehicle?</h4>
+            <p className="mt-1 text-sm leading-6 text-slate-700">
+              If the vehicle you’re looking for isn’t listed, feel free to enquire.
+              We’ll help explore a suitable option based on your group and journey
+              requirements.
             </p>
           </div>
         </Container>
@@ -180,23 +274,44 @@ export function AboutPage() {
             <h2 className="text-2xl font-bold tracking-tight text-brand">
               Customer-Focused Service
             </h2>
+            <h3 className="mt-2 text-lg font-semibold text-[#0b4775]">
+              Travel Planning That Starts with Understanding You
+            </h3>
             <p className="mt-4 text-base leading-7 text-slate-600">
-              Our approach is centered around clear communication and practical travel
-              planning. We aim to help customers understand the available vehicle and
-              tariff options before confirming their travel arrangements. For
-              route-specific requirements, the applicable fare and travel conditions
-              can be discussed directly with RideWe.
+              Every traveller has different needs, and we believe the right travel
+              plan starts with understanding them. RideWe focuses on clear
+              communication, transparent discussions, and practical travel planning
+              so you can make an informed choice before confirming your trip.
+            </p>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              From selecting a suitable vehicle to understanding the applicable
+              tariff, route, timing, and travel requirements, we’re here to help you
+              plan with confidence. For customized or route-specific journeys,
+              simply share your requirements with us and we’ll discuss the suitable
+              travel options and applicable fare.
             </p>
           </div>
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-brand">
-              South India Travel
+              Travel Destinations
             </h2>
+            <h3 className="mt-2 text-lg font-semibold text-[#0b4775]">
+              Explore More, Travel Further with RideWe
+            </h3>
             <p className="mt-4 text-base leading-7 text-slate-600">
-              RideWe is based in Madurai and supports travel planning across
-              destinations in Tamil Nadu and South India. Whether the journey is a
-              short local trip or a multi-day route, customers can share their travel
-              requirements and discuss a suitable travel plan.
+              From nearby getaways to journeys across cities and states, RideWe
+              helps you plan travel to the destinations you want to explore. Whether
+              it’s a family holiday, temple tour, sightseeing trip, hill-station
+              escape, beach getaway, or a multi-day adventure, share your destination
+              and travel requirements with us.
+            </p>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              We’ll help you explore suitable travel options, routes, vehicles, and
+              arrangements based on your journey.
+            </p>
+            <p className="mt-5 font-semibold leading-7 text-[#0b4775]">
+              Your destination can be anywhere. Let RideWe help you plan the way
+              there.
             </p>
           </div>
         </Container>
