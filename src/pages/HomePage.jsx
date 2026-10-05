@@ -28,31 +28,63 @@ import {
 import { primaryContact } from "../utils/contact.js";
 
 const imageUrl = (path) => `${import.meta.env.BASE_URL}images/${path}`;
-const rideweLogo = `${import.meta.env.BASE_URL}brand/ridewe-logo-horizontal.png`;
 
 const destinationImages = {
-  madurai: "home/madurai-meenakshi.webp",
-  kodaikanal: "destinations/kodaikanal.webp",
-  munnar: "home/munnar-mountains.webp",
+  madurai: "home/destination/destination-tamilnadu.png",
+  kodaikanal: "home/destination/destination-kerala.png",
+  munnar: "home/destination/destination-karnataka.png",
+};
+
+const destinationNames = {
+  madurai: "Tamil Nadu",
+  kodaikanal: "Kerala",
+  munnar: "Karnataka",
+};
+
+const destinationCaptions = {
+  madurai: {
+    title: "Where Heritage Comes Alive",
+    description:
+      "Explore ancient temples, vibrant traditions, scenic landscapes, and timeless experiences.",
+  },
+  kodaikanal: {
+    title: "Where Nature Meets Serenity",
+    description:
+      "Cruise through peaceful backwaters, misty hills, lush greenery, and refreshing escapes.",
+  },
+  munnar: {
+    title: "Where History Meets Adventure",
+    description:
+      "Discover magnificent heritage, scenic mountains, cultural treasures, and unforgettable journeys.",
+  },
 };
 
 function DestinationPreviewCard({ destination }) {
   const image = destinationImages[destination.id];
+  const caption = destinationCaptions[destination.id];
 
   return (
-    <article className="overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)] lg:flex lg:h-full lg:flex-col">
-      <div className="relative aspect-[1.7/1] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce] lg:aspect-auto lg:flex-1">
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#deebec] bg-white shadow-[0_10px_30px_-25px_rgba(0,52,94,0.45)]">
+      <div className="relative aspect-[1523/1032] overflow-hidden bg-gradient-to-br from-[#c8eef2] via-[#e5f6f2] to-[#b9dcce]">
         {image ? (
           <LoadingImage
             alt={`Travel scenery in ${destination.name}`}
             className="absolute inset-0 size-full"
-            imageClassName="object-cover"
+            imageClassName="object-contain"
             loading="lazy"
             src={imageUrl(image)}
           />
         ) : null}
         <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#063f5f]/85 to-transparent px-3 pb-2 pt-7 text-sm font-bold text-white">
           {destination.name}
+        </p>
+      </div>
+      <div className="flex min-h-[136px] flex-1 flex-col items-center justify-center gap-2 px-4 py-2 text-center min-[480px]:min-h-[220px] md:min-h-[184px] lg:min-h-[144px]">
+        <h3 className="bg-gradient-to-r from-[#00a9c5] to-[#31c66a] bg-clip-text text-base font-semibold leading-snug text-transparent">
+          {caption.title}
+        </h3>
+        <p className="text-sm leading-5 text-slate-600">
+          {caption.description}
         </p>
       </div>
     </article>
@@ -62,6 +94,11 @@ function DestinationPreviewCard({ destination }) {
 export function HomePage() {
   const previewDestinations = ["madurai", "kodaikanal", "munnar"]
     .map((id) => destinations.find((destination) => destination.id === id))
+    .map((destination) =>
+      destination
+        ? { ...destination, name: destinationNames[destination.id] }
+        : destination,
+    )
     .filter(Boolean);
 
   return (
@@ -187,9 +224,9 @@ export function HomePage() {
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-20 bg-cover bg-[center_68%]"
+          className="absolute inset-0 -z-20 bg-[length:100%_auto] bg-[center_bottom] bg-no-repeat"
           style={{
-            backgroundImage: `url("${imageUrl("home/munnar-road.webp")}")`,
+            backgroundImage: `url("${imageUrl("home/home-footer-top.png")}")`,
           }}
         />
         <div
@@ -199,13 +236,18 @@ export function HomePage() {
         <Container className="relative grid items-center gap-5 lg:grid-cols-[1fr_0.7fr]">
           <div className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#5de1ce]">
-              Let&apos;s plan the journey
+              Let&apos;s Plan the Journey
             </p>
             <h2 className="mt-1.5 text-2xl font-bold tracking-tight sm:text-3xl" id="contact-preview-title">
-              Plan Your Journey with RideWe
+              Your Journey Starts with a Conversation
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-5 text-white/90">
-              Get in touch with us for customized travel plans and the best travel experience across South India.
+              Have a destination in mind? Let’s make the journey special. Whether
+              you&apos;re planning a family holiday, temple tour, sightseeing trip,
+              airport transfer, or outstation getaway, RideWe helps you plan travel
+              around your needs, preferences, and schedule. Tell us where you want
+              to go, and we’ll help create a travel experience that’s comfortable,
+              flexible, and memorable.
             </p>
             <div className="mt-4 flex flex-wrap gap-2.5">
               <PhoneButton
@@ -224,22 +266,6 @@ export function HomePage() {
                 <Link to="/contact">Contact Us</Link>
               </Button>
             </div>
-          </div>
-          <div className="relative hidden max-h-[190px] w-full lg:block">
-            <img
-              alt="RideWe-branded white Ciaz vehicle"
-              className="block max-h-[190px] w-full object-contain object-right drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)]"
-              height="940"
-              loading="lazy"
-              src={`${import.meta.env.BASE_URL}images/vehicles/ciaz.png`}
-              width="1672"
-            />
-            <img
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-[37%] right-[55%] w-[12%] object-contain"
-              src={rideweLogo}
-            />
           </div>
         </Container>
       </section>
