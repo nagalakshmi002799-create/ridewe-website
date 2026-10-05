@@ -2,6 +2,7 @@ import { Container } from "../components/layout/Container.jsx";
 import { Section } from "../components/layout/Section.jsx";
 import { VehiclesSection } from "../components/home/VehiclesSection.jsx";
 import { TariffPreview } from "../components/home/TariffPreview.jsx";
+import { JourneyCta } from "../components/home/JourneyCta.jsx";
 
 export function VehiclesTariffPage() {
   return (
@@ -26,6 +27,7 @@ export function VehiclesTariffPage() {
         title="Choose Your Vehicle"
       />
       <TariffPreview detailed />
+      <JourneyCta />
     </>
   );
 }

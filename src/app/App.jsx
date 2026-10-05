@@ -1,39 +1,49 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { Component, lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { SiteLayout } from "../components/layout/SiteLayout.jsx";
-import { LoadingScreen } from "../components/ui/LoadingScreen.jsx";
+import { PageTransitionLoader } from "../components/navigation/PageTransitionLoader.jsx";
 import { NotFoundPage } from "../pages/NotFoundPage.jsx";
 
-const HomePage = lazy(() =>
+const loadHomePage = () =>
   import("../pages/HomePage.jsx").then(({ HomePage: page }) => ({
     default: page,
-  })),
-);
-const AboutPage = lazy(() =>
+  }));
+const loadAboutPage = () =>
   import("../pages/AboutPage.jsx").then(({ AboutPage: page }) => ({
     default: page,
-  })),
-);
-const ServicesPage = lazy(() =>
+  }));
+const loadServicesPage = () =>
   import("../pages/ServicesPage.jsx").then(({ ServicesPage: page }) => ({
     default: page,
-  })),
-);
-const VehiclesTariffPage = lazy(() =>
+  }));
+const loadVehiclesTariffPage = () =>
   import("../pages/VehiclesTariffPage.jsx").then(({ VehiclesTariffPage: page }) => ({
     default: page,
-  })),
-);
-const TourDestinationsPage = lazy(() =>
+  }));
+const loadTourDestinationsPage = () =>
   import("../pages/TourDestinationsPage.jsx").then(({ TourDestinationsPage: page }) => ({
     default: page,
-  })),
-);
-const ContactPage = lazy(() =>
+  }));
+const loadContactPage = () =>
   import("../pages/ContactPage.jsx").then(({ ContactPage: page }) => ({
     default: page,
-  })),
-);
+  }));
+
+const HomePage = lazy(loadHomePage);
+const AboutPage = lazy(loadAboutPage);
+const ServicesPage = lazy(loadServicesPage);
+const VehiclesTariffPage = lazy(loadVehiclesTariffPage);
+const TourDestinationsPage = lazy(loadTourDestinationsPage);
+const ContactPage = lazy(loadContactPage);
+
+const routeLoaders = {
+  "/": loadHomePage,
+  "/about": loadAboutPage,
+  "/services": loadServicesPage,
+  "/vehicles-tariff": loadVehiclesTariffPage,
+  "/tour-destinations": loadTourDestinationsPage,
+  "/contact": loadContactPage,
+};
 
 const criticalHomeImages = [
   `${import.meta.env.BASE_URL}images/home/hero/ride-together-background.png`,
@@ -84,49 +94,79 @@ function InitialRouteReadiness({ isHome, onReady }) {
   return null;
 }
 
-function DelayedRouteFallback() {
-  const [visible, setVisible] = useState(false);
+class RouteErrorBoundary extends Component {
+  state = { hasError: false };
 
-  useEffect(() => {
-    const timeoutId = window.setTimeout(() => setVisible(true), 160);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
 
-  return visible ? <LoadingScreen /> : null;
+  render() {
+    if (this.state.hasError) {
+      return (
+        <p className="p-6 text-center text-slate-700" role="alert">
+          This page couldn&apos;t be loaded. Please refresh and try again.
+        </p>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
 function AppRoutes() {
   const location = useLocation();
   const [initialReady, setInitialReady] = useState(false);
+  const [renderedLocation, setRenderedLocation] = useState(location);
+
+  useEffect(() => {
+    if (location.pathname === renderedLocation.pathname) return undefined;
+
+    const loadRoute = routeLoaders[location.pathname];
+    if (loadRoute) {
+      loadRoute().catch((error) => {
+        console.error(`Failed to preload route "${location.pathname}".`, error);
+      });
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setRenderedLocation(location);
+    }, 1000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [location, renderedLocation.pathname]);
 
   useEffect(() => {
     if (initialReady) {
       document.getElementById("initial-loading-screen")?.remove();
     }
   }, [initialReady]);
+  const isRouteChanging = location.pathname !== renderedLocation.pathname;
 
   return (
-    <>
-      <SiteLayout>
-        <Suspense
-          fallback={initialReady ? <DelayedRouteFallback /> : null}
-        >
+    <SiteLayout>
+      {initialReady && isRouteChanging ? (
+        <PageTransitionLoader />
+      ) : (
+        <Suspense fallback={null}>
           <InitialRouteReadiness
-            isHome={location.pathname === "/"}
+            isHome={renderedLocation.pathname === "/"}
             onReady={setInitialReady}
           />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/vehicles-tariff" element={<VehiclesTariffPage />} />
-            <Route path="/tour-destinations" element={<TourDestinationsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <RouteErrorBoundary key={renderedLocation.pathname}>
+            <Routes location={renderedLocation}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/vehicles-tariff" element={<VehiclesTariffPage />} />
+              <Route path="/tour-destinations" element={<TourDestinationsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </RouteErrorBoundary>
         </Suspense>
-      </SiteLayout>
-    </>
+      )}
+    </SiteLayout>
   );
 }
 

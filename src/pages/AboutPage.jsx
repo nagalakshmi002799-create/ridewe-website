@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   BadgeDollarSign,
   CalendarDays,
   CarFront,
@@ -20,7 +19,7 @@ import {
 import { Button } from "../components/ui/button.jsx";
 import { Container } from "../components/layout/Container.jsx";
 import { Section } from "../components/layout/Section.jsx";
-import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
+import { JourneyCta } from "../components/home/JourneyCta.jsx";
 
 const travelSteps = [
   { label: "Share your travel plan", icon: MapPin },
@@ -203,26 +202,7 @@ export function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="bg-brand-dark text-white">
-        <Container className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight">Plan Your Journey</h2>
-            <p className="mt-3 leading-7 text-white/75">
-              Have a destination in mind? Tell us your route, travel date, number of
-              travellers, and preferred vehicle. Our team can discuss the available
-              travel option with you.
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-wrap gap-3">
-            <Button asChild>
-              <Link to="/contact">
-                Plan My Trip <ArrowRight aria-hidden="true" size={16} />
-              </Link>
-            </Button>
-            <WhatsAppButton variant="whatsapp">WhatsApp RideWe</WhatsAppButton>
-          </div>
-        </Container>
-      </Section>
+      <JourneyCta />
     </>
   );
 }
