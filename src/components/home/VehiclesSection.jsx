@@ -32,7 +32,7 @@ export function VehiclesSection({
             description={
               description ??
               (preview
-                ? "Choose from our comfortable, air-conditioned vehicles for solo trips, family outings, group travel, and long-distance journeys. Can’t find the vehicle you’re looking for? No problem. Tell us your travel requirements, preferred vehicle, or group size, and we’ll do our best to arrange the right option for you."
+                ? "Choose from our comfortable, air-conditioned vehicles for solo trips, family outings, group travel, and long-distance journeys. Can’t find the vehicle you’re looking for? No problem. Tell us your travel requirements, or group size, and we’ll do our best to arrange the right option for you."
                 : "Explore our white, air-conditioned vehicles and choose the seating that suits your group.")
             }
             eyebrow={preview ? "Vehicles & Tariff" : "Travel options"}

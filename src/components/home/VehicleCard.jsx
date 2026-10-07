@@ -125,10 +125,10 @@ export function VehicleCard({ vehicle, className, preview = false }) {
               </dl>
             </div>
           ) : null}
-          <p className="px-1 pt-1 text-xs font-semibold text-brand">
+          {/* <p className="px-1 pt-1 text-xs font-semibold text-brand">
             Hills charge {formatVehicleRupees(vehicle.hillsCharge)}
             {vehicle.hillsChargeExtra ? " extra" : ""}
-          </p>
+          </p> */}
         </div>}
         {!preview ? <WhatsAppButton
           ariaLabel={`Plan a trip with ${vehicle.displayName} on WhatsApp`}
