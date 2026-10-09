@@ -202,7 +202,7 @@ export function HomePage() {
               titleId="destinations-preview-title"
             />
             <Button asChild className="h-9 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white hover:brightness-105">
-              <Link to="/tour-destinations">
+              <Link to="/explore-destinations">
                 Explore Destinations <ArrowRight aria-hidden="true" size={15} />
               </Link>
             </Button>

@@ -1,5 +1,11 @@
 import { Component, lazy, Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { SiteLayout } from "../components/layout/SiteLayout.jsx";
 import { PageTransitionLoader } from "../components/navigation/PageTransitionLoader.jsx";
 import { NotFoundPage } from "../pages/NotFoundPage.jsx";
@@ -20,8 +26,12 @@ const loadVehiclesTariffPage = () =>
   import("../pages/VehiclesTariffPage.jsx").then(({ VehiclesTariffPage: page }) => ({
     default: page,
   }));
-const loadTourDestinationsPage = () =>
-  import("../pages/TourDestinationsPage.jsx").then(({ TourDestinationsPage: page }) => ({
+const loadExploreDestinationsPage = () =>
+  import("../pages/ExploreDestinationsPage.jsx").then(({ ExploreDestinationsPage: page }) => ({
+    default: page,
+  }));
+const loadTourPackagesPage = () =>
+  import("../pages/TourPackagesPage.jsx").then(({ TourPackagesPage: page }) => ({
     default: page,
   }));
 const loadContactPage = () =>
@@ -33,7 +43,8 @@ const HomePage = lazy(loadHomePage);
 const AboutPage = lazy(loadAboutPage);
 const ServicesPage = lazy(loadServicesPage);
 const VehiclesTariffPage = lazy(loadVehiclesTariffPage);
-const TourDestinationsPage = lazy(loadTourDestinationsPage);
+const ExploreDestinationsPage = lazy(loadExploreDestinationsPage);
+const TourPackagesPage = lazy(loadTourPackagesPage);
 const ContactPage = lazy(loadContactPage);
 
 const routeLoaders = {
@@ -41,7 +52,8 @@ const routeLoaders = {
   "/about": loadAboutPage,
   "/services": loadServicesPage,
   "/vehicles-tariff": loadVehiclesTariffPage,
-  "/tour-destinations": loadTourDestinationsPage,
+  "/tour-packages": loadTourPackagesPage,
+  "/explore-destinations": loadExploreDestinationsPage,
   "/contact": loadContactPage,
 };
 
@@ -159,7 +171,15 @@ function AppRoutes() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/vehicles-tariff" element={<VehiclesTariffPage />} />
-              <Route path="/tour-destinations" element={<TourDestinationsPage />} />
+              <Route path="/tour-packages" element={<TourPackagesPage />} />
+              <Route
+                path="/explore-destinations"
+                element={<ExploreDestinationsPage />}
+              />
+              <Route
+                path="/tour-destinations"
+                element={<Navigate replace to="/explore-destinations" />}
+              />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

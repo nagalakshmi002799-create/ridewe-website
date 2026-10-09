@@ -60,7 +60,7 @@ export function DestinationsSection({ detailed = false }) {
         <Container>
           {detailed ? (
             <h1 className="mb-2 text-4xl font-bold tracking-tight text-brand sm:text-5xl">
-              Tour Destinations
+              Explore Destinations
             </h1>
           ) : null}
           <SectionIntro
@@ -69,7 +69,7 @@ export function DestinationsSection({ detailed = false }) {
                 ? "Plan your journey across Tamil Nadu and South India with travel options based on your destination, travel dates, group size, and preferred vehicle."
                 : "From ancient temples and heritage cities to peaceful hill stations, scenic coastlines, and unforgettable getaways, explore the diverse beauty of Tamil Nadu and South India with RideWe."
             }
-            eyebrow={detailed ? "Tour Destinations" : "Discover places"}
+            eyebrow={detailed ? "Explore Destinations" : "Discover places"}
             titleId="destinations-title"
             title="Beyond the Destination, Discover the Journey with RideWe"
             titleLevel="h2"
@@ -121,6 +121,11 @@ export function DestinationsSection({ detailed = false }) {
                 destinations, routes, travel duration, vehicle options, and customer
                 requirements.
               </p>
+              <Button asChild className="mt-5 w-fit">
+                <Link to="/tour-packages">
+                  Explore Tour Packages <ArrowRight aria-hidden="true" size={16} />
+                </Link>
+              </Button>
             </Container>
           </Section>
         </>

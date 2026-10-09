@@ -3,7 +3,12 @@ export const homepageNavigation = [
   { id: "about", label: "About Us", to: "/about" },
   { id: "services", label: "Our Services", to: "/services" },
   { id: "vehicles-tariff", label: "Vehicles & Tariff", to: "/vehicles-tariff" },
-  { id: "tour-destinations", label: "Tour Destinations", to: "/tour-destinations" },
+  { id: "tour-packages", label: "Tour Packages", to: "/tour-packages" },
+  {
+    id: "explore-destinations",
+    label: "Explore Destinations",
+    to: "/explore-destinations",
+  },
   { id: "contact", label: "Contact Us", to: "/contact" },
 ];
 
