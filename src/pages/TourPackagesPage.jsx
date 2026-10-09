@@ -26,7 +26,7 @@ export function TourPackagesPage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/75 via-white/45 to-white/10"
         />
-        <Container className="relative grid min-h-[330px] items-center py-10 sm:min-h-[370px] sm:py-12">
+        <Container className="relative grid min-h-[330px] items-start py-10 sm:min-h-[370px] sm:py-12">
           <div className="max-w-[700px]">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-dark sm:text-sm">
               Tour Packages
@@ -37,7 +37,7 @@ export function TourPackagesPage() {
             >
               Explore More. Travel Better. Choose a Journey That Fits You.
             </h1>
-            <p className="mt-4 max-w-[620px] text-sm font-medium leading-6 text-[#174c72] sm:text-base sm:leading-7">
+            <p className="mt-4 max-w-[620px] text-sm font-semibold leading-6 text-[#174c72] sm:text-base sm:leading-7">
               Explore popular travel package ideas for families, groups, couples,
               and travellers looking for comfortable journeys across South India.
             </p>

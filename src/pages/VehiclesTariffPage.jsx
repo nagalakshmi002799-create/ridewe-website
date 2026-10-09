@@ -77,7 +77,7 @@ export function VehiclesTariffPage() {
             >
               The Right Ride for Your Journey
             </h1>
-            <p className="mt-4 max-w-[570px] text-sm font-medium leading-6 text-[#174c72] sm:text-base sm:leading-7">
+            <p className="mt-4 max-w-[570px] text-sm font-semibold leading-6 text-[#174c72] sm:text-base sm:leading-7">
               <span className="hidden sm:inline">
                 Whether you&apos;re travelling solo, with family, or as a group,
                 choose from our range of comfortable vehicles based on your travel

@@ -61,6 +61,12 @@ function useInfiniteCarousel() {
 
   function handlePointerDown(event) {
     if (event.pointerType !== "mouse" || event.button !== 0) return;
+    if (
+      event.target instanceof Element &&
+      event.target.closest("button, a, input, select, textarea, [role='button']")
+    ) {
+      return;
+    }
 
     dragRef.current = {
       pointerId: event.pointerId,
@@ -276,7 +282,7 @@ export function ExploreDestinationsPage() {
             >
               Every Destination Has a Story. Let’s Make It Yours.
             </h1>
-            <p className="mt-5 max-w-[600px] text-sm font-medium leading-6 text-[#174c72] sm:text-base sm:leading-7">
+            <p className="mt-5 max-w-[600px] text-sm font-semibold leading-6 text-[#174c72] sm:text-base sm:leading-7">
               <span className="sm:hidden">
                 Discover breathtaking destinations, timeless heritage, and
                 unforgettable escapes with flexible travel options tailored to

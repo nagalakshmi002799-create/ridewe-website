@@ -117,6 +117,9 @@ export function ServicesPage() {
             >
               More Ways to Travel. More Ways to Explore. Travel Your Way with RideWe.
             </h1>
+            <p className="mt-4 max-w-[620px] text-sm font-semibold leading-6 text-[#174c72] sm:text-base sm:leading-7">
+              From local rides to memorable getaways, discover comfortable, reliable, and flexible travel solutions tailored to your journey with RideWe.
+            </p>
           </div>
         </Container>
       </section>

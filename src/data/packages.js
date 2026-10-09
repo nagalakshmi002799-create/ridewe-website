@@ -3,7 +3,7 @@ import { tourPackageSchema } from "../lib/schemas/package.js";
 export const packages = tourPackageSchema.array().parse([
   {
     id: "madurai-heritage-temple-tour",
-    title: "Madurai Heritage & Temple Tour",
+    title: "Madurai Heritage & Sightseeing",
     region: "Tamil Nadu",
     duration: "1 Day",
     route: "Madurai local sightseeing",
@@ -12,9 +12,40 @@ export const packages = tourPackageSchema.array().parse([
       "Thirumalai Nayak Palace",
       "Vandiyur Mariamman Teppakulam",
       "Gandhi Memorial Museum",
+      "As per Customer Request"
     ],
-    image: `${import.meta.env.BASE_URL}images/packages/temple-tour.png`,
+    image: `${import.meta.env.BASE_URL}images/packages/local-trip.png`,
     cta: "Plan This Trip",
+  },
+  {
+    id: "south-india-multi-day-tour",
+    title: "South India Multi-Day Tour",
+    region: "South India",
+    duration: "Custom",
+    route: "Customizable",
+    highlights: [
+      "Multiple destinations",
+      "Temple tours",
+      "Sightseeing",
+      "Hill stations",
+    ],
+    image: `${import.meta.env.BASE_URL}images/packages/south-india-trip.png`,
+    cta: "Customize This Trip",
+  },
+  {
+    id: "north-india-multi-day-tour",
+    title: "North India Multi-Day Tour",
+    region: "North India",
+    duration: "Custom",
+    route: "Customizable",
+    highlights: [
+      "Multiple destinations",
+      "Temple tours",
+      "Sightseeing",
+      "Hill stations",
+    ],
+    image: `${import.meta.env.BASE_URL}images/packages/multi-days-trip.png`,
+    cta: "Customize This Trip",
   },
   {
     id: "madurai-rameswaram-tour",
@@ -88,19 +119,5 @@ export const packages = tourPackageSchema.array().parse([
     image: `${import.meta.env.BASE_URL}images/home/coorg-hills.webp`,
     cta: "Plan This Trip",
   },
-  {
-    id: "south-india-multi-day-tour",
-    title: "South India Multi-Day Tour",
-    region: "South India",
-    duration: "Custom",
-    route: "Customizable",
-    highlights: [
-      "Multiple destinations",
-      "Temple tours",
-      "Sightseeing",
-      "Hill stations",
-    ],
-    image: `${import.meta.env.BASE_URL}images/packages/multi-days-trip.png`,
-    cta: "Customize This Trip",
-  },
+  
 ]);
