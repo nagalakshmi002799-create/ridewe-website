@@ -1,8 +1,13 @@
+import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { packages } from "../data/packages.js";
+import { Button } from "../components/ui/button.jsx";
 import { Container } from "../components/layout/Container.jsx";
+import { PhoneButton } from "../components/layout/PhoneButton.jsx";
 import { Section } from "../components/layout/Section.jsx";
+import { WhatsAppButton } from "../components/layout/WhatsAppButton.jsx";
 import { PackageCard } from "../components/packages/PackageCard.jsx";
+import { scrollToSection } from "../utils/scroll-to-section.js";
 
 const heroImage = `${import.meta.env.BASE_URL}images/home/hero/ride-together-background.png`;
 
@@ -41,24 +46,62 @@ export function TourPackagesPage() {
               Explore popular travel package ideas for families, groups, couples,
               and travellers looking for comfortable journeys across South India.
             </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Button
+                asChild
+                className="group h-10 rounded-full border-0 bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-5 text-sm !text-white shadow-[0_8px_18px_-12px_rgba(0,100,110,0.65)] transition-shadow hover:brightness-105 hover:shadow-[0_10px_20px_-10px_rgba(0,100,110,0.55)]"
+                onClick={(event) => scrollToSection(event, "trip-planner")}
+              >
+                <a href="#trip-planner">
+                  Plan My Trip
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-0.5"
+                    size={17}
+                  />
+                </a>
+              </Button>
+              <WhatsAppButton
+                className="h-10 rounded-full border-[#00a9b5] bg-white/90 px-5 text-sm text-[#078a8e] shadow-[0_8px_18px_-12px_rgba(0,100,110,0.45)] transition-shadow hover:bg-white hover:shadow-[0_10px_20px_-10px_rgba(0,100,110,0.4)]"
+                variant="outline"
+              >
+                Enquire on WhatsApp
+              </WhatsAppButton>
+            </div>
           </div>
         </Container>
       </section>
 
       <Section aria-labelledby="popular-tour-packages-title" className="bg-surface">
         <Container>
-          <div className="mb-8 max-w-3xl sm:mb-10">
-            <h2
-              className="text-3xl font-bold leading-tight tracking-[-0.035em] text-brand sm:text-4xl"
-              id="popular-tour-packages-title"
-            >
-              Popular Tour Packages
-            </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-              Explore some popular journey ideas from Madurai and across South
-              India. Share your preferred package or customise it around your
-              travel plans.
-            </p>
+          <div className="mb-8 flex flex-col gap-5 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-3xl">
+              <h2
+                className="text-3xl font-bold leading-tight tracking-[-0.035em] text-brand sm:text-4xl"
+                id="popular-tour-packages-title"
+              >
+                Popular Tour Packages
+              </h2>
+              <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+                Explore some popular journey ideas from Madurai and across South
+                India. Share your preferred package or customise it around your
+                travel plans.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <PhoneButton
+                className="dark-contact header-call-contact"
+                variant="darkContact"
+              >
+                Call Now
+              </PhoneButton>
+              <WhatsAppButton
+                className="px-3 sm:px-4"
+                variant="lightContact"
+              >
+                WhatsApp us
+              </WhatsAppButton>
+            </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {packages.map((packageItem) => (

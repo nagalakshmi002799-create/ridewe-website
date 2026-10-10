@@ -2,10 +2,12 @@ import { useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { homepageNavigation } from "../../data/homepage.js";
+import { socialActions } from "../../data/social-actions.js";
 import { primaryContact } from "../../utils/contact.js";
 import { Button } from "../ui/button.jsx";
 import { Container } from "./Container.jsx";
 import { PhoneButton } from "./PhoneButton.jsx";
+import { SocialActionLink } from "./SocialActionLink.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
 
 export function SiteHeader() {
@@ -74,20 +76,20 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
-          <Button
-            asChild
-            className="hidden shrink-0 whitespace-nowrap bg-gradient-to-r from-accent to-[#35D45B] !text-white shadow-[0_12px_24px_-16px_rgba(0,160,166,0.7)] lg:inline-flex"
-          >
-            <a href="#trip-planner" onClick={(event) => {
-              event.preventDefault();
-              document.getElementById("trip-planner")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }}>
-              Plan My Trip
-            </a>
-          </Button>
+          {["facebook", "instagram", "youtube"].map((actionId) => {
+            const action = socialActions.find(
+              (socialAction) => socialAction.id === actionId,
+            );
+
+            return (
+              <SocialActionLink
+                action={action}
+                className="hidden size-10 shrink-0 place-items-center rounded-lg bg-gradient-to-r from-accent to-[#35D45B] shadow-sm transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 lg:grid"
+                iconClassName="size-5 brightness-0 invert"
+                key={actionId}
+              />
+            );
+          })}
           <PhoneButton
             className="dark-contact header-call-contact hidden sm:inline-flex"
             variant="darkContact"

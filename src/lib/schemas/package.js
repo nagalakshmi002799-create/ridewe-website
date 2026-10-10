@@ -6,7 +6,8 @@ export const tourPackageSchema = z.object({
   region: z.string(),
   duration: z.string(),
   route: z.string(),
-  highlights: z.array(z.string()),
+  description: z.string(),
+  highlights: z.array(z.string()).optional(),
   image: z.string(),
   cta: z.string(),
 });

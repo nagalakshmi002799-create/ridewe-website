@@ -1,4 +1,5 @@
 import { Clock3, MapPin, Route } from "lucide-react";
+import { PhoneButton } from "../layout/PhoneButton.jsx";
 import { WhatsAppButton } from "../layout/WhatsAppButton.jsx";
 import { LoadingImage } from "../ui/LoadingImage.jsx";
 
@@ -21,7 +22,7 @@ export function PackageCard({ packageItem }) {
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
       <LoadingImage
         alt={packageItem.title}
-        className="aspect-[1.7/1] w-full"
+        className="aspect-[3/2] w-full"
         height="400"
         imageClassName="object-cover"
         loading="lazy"
@@ -29,38 +30,55 @@ export function PackageCard({ packageItem }) {
         width="680"
       />
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
-          <span className="inline-flex items-center gap-1.5">
-            <MapPin aria-hidden="true" size={14} />
-            {packageItem.region}
-          </span>
-          <span className="inline-flex items-center gap-1.5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-xl font-bold leading-snug text-brand">
+            {packageItem.title}
+          </h3>
+          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 text-xs font-semibold text-brand">
             <Clock3 aria-hidden="true" size={14} />
             {packageItem.duration}
           </span>
         </div>
-        <h3 className="mt-3 text-xl font-bold leading-snug text-brand">
-          {packageItem.title}
-        </h3>
-        <p className="mt-3 flex items-start gap-2 text-sm leading-6 text-slate-600">
+        <p className="mt-3 flex items-start gap-2 text-sm font-semibold leading-6 text-slate-700">
           <Route aria-hidden="true" className="mt-1 shrink-0 text-accent-dark" size={16} />
-          <span>{packageItem.route}</span>
+          <span>
+            {packageItem.route}
+            <span className="mt-0.5 flex items-center gap-1 text-xs font-medium text-slate-500">
+              <MapPin aria-hidden="true" size={12} />
+              {packageItem.region}
+            </span>
+          </span>
         </p>
-        <ul className="mt-4 grid gap-1.5 text-sm leading-6 text-slate-600">
-          {packageItem.highlights.map((highlight) => (
-            <li className="flex gap-2" key={highlight}>
-              <span aria-hidden="true" className="text-accent-dark">•</span>
-              {highlight}
-            </li>
-          ))}
-        </ul>
-        <WhatsAppButton
-          className="mt-5 w-fit"
-          message={getPlanningMessage(packageItem)}
-          variant="outline"
-        >
-          {packageItem.cta}
-        </WhatsAppButton>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          {packageItem.description}
+        </p>
+        {packageItem.highlights?.length > 0 ? (
+          <p className="mt-4 text-sm leading-6 text-slate-600">
+            {packageItem.highlights.join(" · ")}
+          </p>
+        ) : null}
+        <div className="mt-auto flex flex-wrap gap-2 pt-5">
+          <WhatsAppButton
+            className="flex-1 border-2 border-transparent"
+            gradientText
+            message={getPlanningMessage(packageItem)}
+            style={{
+              backgroundImage:
+                 "linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(90deg, #00A9B5, #35D45B)",
+              backgroundOrigin: "border-box",
+              backgroundClip: "padding-box, border-box",
+            }}
+            variant="outline"
+          >
+            Let’s Plan
+          </WhatsAppButton>
+          <PhoneButton
+            className="dark-contact !border-0 !bg-gradient-to-r !from-[#00A9B5] !to-[#35D45B] !text-white hover:!brightness-105"
+            variant="darkContact"
+          >
+            Call Now
+          </PhoneButton>
+        </div>
       </div>
     </article>
   );

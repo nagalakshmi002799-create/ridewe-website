@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate min-h-[calc(100svh-73px-10.49vw)] overflow-hidden bg-[#e9f4f5] bg-cover bg-no-repeat bg-[position:65%_56%] text-[#0b4775] sm:min-h-[calc(100svh-81px-10.49vw)] sm:bg-[position:50%_56%] lg:bg-[position:54%_56%] xl:min-h-[calc(100svh-77px-10.49vw)]"
+      className="relative isolate min-h-[calc(100svh-73px-10.49vw)] [@media_(min-width:768px)_and_(pointer:coarse)_and_(hover:none)]:min-h-0 overflow-hidden bg-[#e9f4f5] bg-cover bg-no-repeat bg-[position:65%_56%] text-[#0b4775] sm:min-h-[calc(100svh-81px-10.49vw)] sm:bg-[position:50%_56%] lg:bg-[position:54%_56%] xl:min-h-[calc(100svh-77px-10.49vw)]"
       id="home"
       style={{
         backgroundImage: `url("${homeImages}/hero/ride-together-background.png")`,

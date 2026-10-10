@@ -1,5 +1,6 @@
 import { SiteFooter } from "./SiteFooter.jsx";
 import { SiteHeader } from "./SiteHeader.jsx";
+import { FloatingSocialActions } from "./FloatingSocialActions.jsx";
 import { ScrollToTop } from "../navigation/ScrollToTop.jsx";
 
 export function SiteLayout({ children }) {
@@ -17,6 +18,7 @@ export function SiteLayout({ children }) {
         {children}
       </main>
       <SiteFooter />
+      <FloatingSocialActions />
     </div>
   );
 }

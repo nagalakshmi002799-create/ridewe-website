@@ -1,17 +1,19 @@
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { homepageNavigation } from "../../data/homepage.js";
+import { socialActions } from "../../data/social-actions.js";
 import { primaryContact, secondaryContacts } from "../../utils/contact.js";
 import { scrollToTop } from "../../utils/scroll-to-top.js";
 import { Container } from "./Container.jsx";
 import { PhoneButton } from "./PhoneButton.jsx";
+import { SocialActionLink } from "./SocialActionLink.jsx";
 import { WhatsAppButton } from "./WhatsAppButton.jsx";
 
 export function SiteFooter() {
   return (
     <footer className="relative isolate mt-auto overflow-hidden bg-brand-dark text-white">
-      <Container className="relative grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_1.1fr_auto] lg:gap-8 lg:py-12">
-        <div>
+      <Container className="relative grid gap-8 py-10 lg:grid-cols-[1.25fr_0.8fr_1.1fr_auto] lg:gap-8 lg:py-12">
+        <div className="order-1 lg:order-1">
           <Link
             className="inline-flex w-fit items-center rounded-lg bg-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             to="/"
@@ -35,9 +37,24 @@ export function SiteFooter() {
           <p className="mt-2 text-sm text-white/70">
             Madurai, Tamil Nadu, India
           </p>
+          <nav
+            aria-label="RideWe social and contact links"
+            className="mt-5 flex flex-wrap gap-2"
+          >
+            {socialActions.map((action) => (
+              <SocialActionLink
+                action={action}
+                className="grid size-10 place-items-center rounded-full border border-white/20 bg-gradient-to-r from-accent to-[#35D45B] transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                key={action.id}
+              />
+            ))}
+          </nav>
+          <p className="mt-3 text-sm font-semibold tracking-wide text-white">
+            Follow Us for More Travel Inspiration &amp; Updates!
+          </p>
         </div>
 
-        <div>
+        <div className="order-3 lg:order-2">
           <h2 className="text-sm font-semibold text-white">Explore</h2>
           <nav aria-label="Footer navigation" className="mt-3 grid gap-2">
             {homepageNavigation.map((item) => (
@@ -52,8 +69,8 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div>
-          <h2 className="text-sm font-semibold text-white">Get in touch</h2>
+        <div className="order-2 lg:order-3">
+          <h2 className="text-sm font-semibold text-white">Get in Touch</h2>
           <div className="mt-3 grid gap-4 text-sm text-white/70">
             <p className="flex items-center gap-2">
               <MapPin aria-hidden="true" className="shrink-0 text-accent" size={16} />
@@ -150,7 +167,7 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <div className="flex items-start lg:justify-end">
+        <div className="order-4 flex items-start lg:order-4 lg:justify-end">
           <Link
             className="inline-flex min-h-10 items-center gap-2 rounded-full bg-gradient-to-r from-[#00a9c5] to-[#31c66a] px-4 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#35d45b] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             to="/contact"

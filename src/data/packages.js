@@ -7,6 +7,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Tamil Nadu",
     duration: "1 Day",
     route: "Madurai local sightseeing",
+    description: "A one-day sightseeing idea around Madurai.",
     highlights: [
       "Meenakshi Amman Temple",
       "Thirumalai Nayak Palace",
@@ -14,7 +15,7 @@ export const packages = tourPackageSchema.array().parse([
       "Gandhi Memorial Museum",
       "As per Customer Request"
     ],
-    image: `${import.meta.env.BASE_URL}images/packages/local-trip.png`,
+    image: `${import.meta.env.BASE_URL}images/tour-packages/1_madurai.png`,
     cta: "Plan This Trip",
   },
   {
@@ -23,6 +24,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "South India",
     duration: "Custom",
     route: "Customizable",
+    description: "A customizable multi-day route across South India.",
     highlights: [
       "Multiple destinations",
       "Temple tours",
@@ -38,6 +40,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "North India",
     duration: "Custom",
     route: "Customizable",
+    description: "A customizable multi-day route across North India.",
     highlights: [
       "Multiple destinations",
       "Temple tours",
@@ -53,6 +56,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Tamil Nadu",
     duration: "1 Day",
     route: "Madurai → Rameswaram → Madurai",
+    description: "A one-day round trip from Madurai to Rameswaram.",
     highlights: [
       "Ramanathaswamy Temple",
       "Pamban area",
@@ -67,6 +71,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Tamil Nadu",
     duration: "2 Days",
     route: "Madurai → Kanyakumari → Madurai",
+    description: "A two-day round trip from Madurai to Kanyakumari.",
     highlights: [
       "Vivekananda Rock Memorial",
       "Thiruvalluvar Statue",
@@ -81,6 +86,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Kerala",
     duration: "2 Days",
     route: "Madurai → Munnar → Madurai",
+    description: "A two-day round trip from Madurai to Munnar.",
     highlights: ["Tea estates", "Misty hills", "Scenic viewpoints"],
     image: `${import.meta.env.BASE_URL}images/packages/hills-station.png`,
     cta: "Plan This Trip",
@@ -91,6 +97,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Kerala",
     duration: "3 Days",
     route: "Madurai → Kerala destinations → Madurai",
+    description: "A three-day route from Madurai to destinations in Kerala.",
     highlights: [
       "Backwaters",
       "Hill destinations",
@@ -105,6 +112,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Tamil Nadu",
     duration: "2 Days",
     route: "Madurai → Ooty → Madurai",
+    description: "A two-day round trip from Madurai to Ooty.",
     highlights: ["Nilgiri hills", "Tea estates", "Scenic viewpoints"],
     image: `${import.meta.env.BASE_URL}images/packages/hills-station.png`,
     cta: "Plan This Trip",
@@ -115,6 +123,7 @@ export const packages = tourPackageSchema.array().parse([
     region: "Karnataka",
     duration: "3 Days",
     route: "Madurai → Coorg → Madurai",
+    description: "A three-day round trip from Madurai to Coorg.",
     highlights: ["Coffee estates", "Waterfalls", "Mountain landscapes"],
     image: `${import.meta.env.BASE_URL}images/home/coorg-hills.webp`,
     cta: "Plan This Trip",
